@@ -31,3 +31,25 @@
   * _inline-block_ 强制转换为行内块元素
 
 ### min-width(最小宽度),min-height(最小高度)
+
+
+
+
+
+## Git
+### `git config --global user.name "用户名"`
+### `git config --global user.email "Email"`
+### `git init`  初始化仓库
+
+
+### `git status` 查看仓库状态
+### `git add  文件名 || 文件夹名`  将文件从工作区提交到缓冲区
+### `git commit -m "提交注释" ` 将缓冲区里所有文件提交版本库
+
+
+
+## shell命令
+  `cd ..` 退到上一级
+  `cd 文件夹名`   进入某个文件夹
+  `dir(window) ls(linux)` 列出当前路径下的文件
+  `mkdir 文件夹名` 创建一个文件夹
