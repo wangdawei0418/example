@@ -39,12 +39,16 @@
 ## Git
 ### `git config --global user.name "用户名"`
 ### `git config --global user.email "Email"`
+
 ### `git init`  初始化仓库
-
-
 ### `git status` 查看仓库状态
 ### `git add  文件名 || 文件夹名`  将文件从工作区提交到缓冲区
 ### `git commit -m "提交注释" ` 将缓冲区里所有文件提交版本库
+### `git diff 文件名` 比对差异
+### `git checkout 文件名` 撤销修改（用版本库回滚工作区）
+### `git reset --hard (版本号 || HEAD^) ` 版本回溯
+### `git log` 列出版本信息
+### `git reflog` 列出完整版本信息
 
 
 
