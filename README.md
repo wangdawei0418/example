@@ -37,13 +37,13 @@
 
 
 ## Git
-###以下命令为环境配置命令不经常使用
+### 以下命令为环境配置命令不经常使用
 * `git config --global user.name "用户名"`
 * `git config --global user.email "Email"`
 * `ssh-keygen -t rsa -C "电子邮箱"` 生成密钥
 * `git init`  初始化仓库
 
-###以下命令为经常使用的命令，加粗为使用频率最高的命令
+### 以下命令为经常使用的命令，加粗为使用频率最高的命令
 #### * `git status` 查看仓库状态
 #### * `git add 文件名 || 文件夹名`  将文件从工作区提交到缓冲区
 #### * `git commit -m "提交注释" ` 将缓冲区里所有文件提交版本库
