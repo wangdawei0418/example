@@ -1,0 +1,238 @@
+*{margin:0;padding:0;}
+li{list-style:none;}
+a{text-decoration:none;color:#333}
+a:hover{color:#dd4012;}
+body{color:#333;font-size:12px;font-family:"微软雅黑";background-color:#f0f1f1;}
+h1,h2,h3,h4,h5,h6{font-weight:normal;}
+.content{
+  width:1100px;
+  margin:0 auto;
+}
+.clear{clear:both;}
+.top{
+  background-color:#000;
+  height:48px;
+  line-height:48px;
+}
+.logo{
+  position:absolute;
+}
+.top ul{
+  float:left;
+}
+.top .top-right{
+  float:right;
+}
+.nav{margin-left:183px;}
+.nav li{
+  float:left;
+  padding:0 20px;
+}
+.top li{color:#eee;}
+.nav li:hover{
+  background-color:#dd4012;
+}
+.top ul li:hover a{color:#fff;}
+.top li a{
+  display:block;
+  color:#eee;
+}
+.phone{
+  background-image: url(../images/phone.png);
+  background-repeat:no-repeat;
+  background-position:0 50%;
+  padding-left:20px;
+}
+.top li{
+  float:left;
+}
+.top .icon{
+  height:48px;
+  background-repeat:no-repeat;
+  background-position:0 50%;
+  margin-left:10px;
+}
+.top .icon a{
+  display:block;
+  height:48px;
+}
+.qq{background-image:url(../images/qq.png);width:18px;}
+.qq:hover{background-image:url(../images/qqh.png);}
+.weibo{background-image:url(../images/weibo.png);width:23px;}
+.weibo:hover{background-image:url(../images/weiboh.png);}
+.weixin{background-image:url(../images/weixin.png);width:22px;}
+.weixin:hover{background-image:url(../images/weixinh.png);}
+.youxiang{background-image:url(../images/email.png);width:20px;}
+.youxiang:hover{background-image:url(../images/emailh.png);}
+.banner{
+  height:220px;
+  background-image:url(../images/banner.png);
+  overflow:hidden;
+  margin-bottom:30px;
+}
+.banner li{
+  float:left;
+  background-color:
+}
+.banner li,.banner a{
+  color:#fff;
+}
+.banner a:hover{
+  color:#dd4012;
+}
+.banner .position{
+  background-color:#000;
+  height:30px;
+  margin-top:190px;
+  line-height:30px;
+  background-color:rgba(0,0,0,.3);
+}
+.tab li{
+  float:left;
+  margin-right:20px;
+}
+.tab{
+  margin:0 auto 30px auto;
+  overflow:hidden;
+}
+.tab a{
+  display:block;
+  padding:5px 10px;
+  background-color:#fff;
+}
+.tab a:hover{
+  background-color:#666;
+  color:#fff;
+}
+.tab .focus{
+  background-color:#666;
+  color:#fff;
+}
+.item{
+  background-color:#fff;
+  float:left;
+  padding-bottom:20px;
+  width:258px;
+  margin-right:20px;
+  margin-bottom:35px;
+  border:1px solid #fff;
+  overflow:hidden;
+}
+.item:hover{
+  border:1px solid #dd4012;
+}
+.item img{
+  width:100%;
+  transition:all .5s;
+}
+.item h2{
+  padding-left:5px;
+  color:#000;
+  margin:8px 0 15px 0;
+  transition:all .5s
+}
+.item:hover h2{
+  text-indent:3px;
+  color:#dd4012;
+}
+.item ul{
+  padding-left:5px;
+  color:#999;
+}
+.item li{float:left;margin-right:4px;}
+.item .nomargin{margin:0;}
+.nomargin{margin:0;}
+.itemList{overflow:hidden;}
+.copyright{
+  color:#FFF;
+  overflow:hidden;
+  background-color:#000;
+  padding:20px 0;
+}
+.copyright a{color:#FFF;}
+.copyright .left{
+  float:left;
+}
+.copyright .right{
+  float:right;
+}
+.copyright ul{
+  overflow:hidden;
+}
+.copyright li{
+  margin-left:10px;
+  float:right;
+}
+.tabSwtich{
+  width:240px;
+  margin:0 auto 30px auto;
+  overflow:hidden;
+}
+.tabSwtich a{display:block;}
+.tabSwtich li:hover{
+  background-color: #DD4012;
+}
+.tabSwtich li:hover a{color:#FFF;}
+.tabSwtich li{
+  width:36px;
+  float:left;
+  height:36px;
+  text-align:center;
+  line-height: 36px;
+  color:#333;
+  background-color:#fff;
+  margin-right:4px;
+}
+.guandian{background-image:url(../images/guandianBanner.png)}
+.guandian-item .left{
+  float:left;
+  width:100px;
+  margin-right:40px;
+  border-top:1px solid #e3e3e3;
+  padding-top:25px;
+  text-align:center;
+}
+.guandian-item .left span{
+  font-size:10px;
+}
+.guandian-item .left h3{
+  font-size:42px;
+  font-family:Arial;
+  font-weight:bold;
+}
+.big-img{
+  float:left;
+}
+.guandian-item{
+  overflow:hidden;
+  padding-bottom:50px;
+}
+.guandian-item .right{
+  width:949px;
+  overflow:hidden;
+  padding-top:25px;
+  border-top:1px solid #e3e3e3;
+}
+.guandian-item .right-right{
+  width:700px;
+  float:right;
+}
+.guandian-item ul{
+  overflow:hidden;
+  margin:10px 0;
+}
+.guandian-item li{
+  float:left;
+  margin-right:5px;
+}
+.guandian-item li a{
+  color:#999;
+}
+.guandian-item p{
+  color:#666;
+}
+.guandian-item h2{
+  color:#dd4012;
+  font-size:18px;
+  font-weight:bold;
+}
