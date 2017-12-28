@@ -66,4 +66,4 @@
 ## CSS透明实现方案
   * `opacity` 不透明度 举例:`opacity:.5`
   * `background-color:rgba()` 背景不透明  举例 `background-color:rgba(0,0,0,.3)`
-  ####注意：opacity属性改变不透明度时会影响到元素内容及其子孙级元素，并且该影响不可被逆转。如果遇到只想背景色拥有不透明度的场景时，应使用background-color:rgba()的方式来实现。
+#### 注意：opacity属性改变不透明度时会影响到元素内容及其子孙级元素，并且该影响不可被逆转。如果遇到只想背景色拥有不透明度的场景时，应使用background-color:rgba()的方式来实现。
