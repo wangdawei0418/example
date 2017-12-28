@@ -52,6 +52,7 @@
 ### `git log` 列出版本信息
 ### `git reflog` 列出完整版本信息
 ### `git clone`_url_  从远程仓库中克隆
+### `git push`  向远程库推送版本
 
 
 ## shell命令
@@ -59,3 +60,7 @@
   `cd 文件夹名`   进入某个文件夹
   `dir(window) ls(linux)` 列出当前路径下的文件
   `mkdir 文件夹名` 创建一个文件夹
+  `pwd` 显示当前路径
+
+## CSS透明实现方案
+  `opacity` 不透明度 举例:`opacity:.5`
