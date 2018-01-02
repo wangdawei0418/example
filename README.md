@@ -29,6 +29,7 @@
   * _block_ 强制转换为块级元素
   * _inline_ 强制转换为行内元素
   * _inline-block_ 强制转换为行内块元素
+  * _none_  隐藏
 
 ### min-width(最小宽度),min-height(最小高度)
 

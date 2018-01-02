@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+      *{margin:0;padding:0;}
+      a{text-decoration:none;color:#fff;}
+      body{
+        font-size: 12px;
+      }
+      li{list-style:none;}
+      .top{
+        height:42px;
+        position:absolute;
+        width:100%;
+        background-color:rgba(0,0,0,.5);
+      }
+      .content{
+        width:1000px;
+        margin:0 auto;
+      }
+      .banner{
+        height:180px;
+        background-image:url(bilibilibg.png@.webp)
+      }
+      .first-nav li{
+        float:left;
+        line-height:42px;
+        position:relative;
+      }
+      .first-nav a{
+        color:#fff;
+        display: block;
+        padding:0 10px;
+      }
+      .first-nav a:hover{
+        background-color:rgba(255,255,255,.3);
+      }
+      .first-nav .upload{
+        float:right;
+      }
+      .first-nav .upload a{
+        background-color:#e77;
+        height:50px;
+        border-radius:0 0 8px 8px;
+      }
+      .gameCenter{
+        width:466px;
+        height:256px;
+        position:absolute;
+        display:none;
+        background-color:#fff;
+        box-shadow:0 0 10px #333;
+      }
+      .first-nav li:hover .gameCenter{
+        display:block;
+      }
+      .gameCenter-content{
+        position:relative;
+        height:256px;
+      }
+      .gameCenter .left{
+        width:265px;
+        float:left;
+      }
+      .gameCenter .right{
+        width:200px;
+        float:right;
+      }
+      .gameCenter ul{margin-top:20px;}
+      .gameCenter li{
+        line-height:32px;
+        float:none;
+        padding-left:20px;
+        cursor:pointer;
+        position:static;
+      }
+      .gameCenter li:hover{
+        background-color:#eee;
+      }
+      .gameCenter .right img{
+        position:absolute;
+        right:-180px;
+        bottom:0;
+        display:none;
+      }
+      .gameCenter .right li:hover img{
+        display:block;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="top">
+      <div class="content">
+        <ul class="first-nav">
+          <li><a href="#">主站</a></li>
+          <li><a href="#">画友</a></li>
+          <li>
+            <a href="#">游戏中心</a>
+            <div class="gameCenter">
+              <div class="gameCenter-content">
+                <div class="left">
+
+                </div>
+                <div class="right">
+                  <ul>
+                    <li>
+                      决战！平安京
+                      <img src="bilibili11.png" alt="">
+                    </li>
+                    <li>无法触碰的掌心
+                    <img src="bilibili22.png" alt=""></li>
+                    <li>东离剑游纪之生死一剑
+                    <img src="bilibili33.png" alt=""></li>
+                    <li>梦之祭！
+                    <img src="bilibili44.png" alt=""></li>
+                    <li>歌之王子殿下：闪耀之星
+                    <img src="bilibili55.png" alt=""></li>
+                    <li>BanG Dream！
+                    <img src="bilibili66.png" alt=""></li>
+                    <li>A3!满开剧团
+                    <img src="bilibili77.png" alt=""></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li><a href="#">直播</a></li>
+          <li><a href="#">会员购</a></li>
+          <li><a href="#">周边</a></li>
+          <li><a href="#">移动端</a></li>
+          <li class="upload"><a href="#">投稿</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="banner">
+
+    </div>
+  </body>
+</html>
