@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>hightcharts</title>
+    <script src="https://cdn.hcharts.cn/highcharts/highcharts.js"></script>
+    <script type="text/javascript">
+      window.onload = function(){
+        var container = document.getElementsByClassName("container")[0];
+        var chart = Highcharts.chart(container, {
+          title: {
+              text: '3班”传悦“项目进度'
+          },
+          subtitle: {
+              text: '第一阶段整站项目,共计20个静态页面，结合UI质量，代码结构，进度，交互效果的合理性四个维度综合考虑形成的最终结果)'
+          },
+          yAxis: {
+              title: {
+                  text: '分值'
+              },
+              labels: {
+                formatter:function(){
+                  if(this.value <= 40){
+                    return "D (不及格)("+this.value+")"
+                  }
+                  if(this.value <60 && this.value >40) {
+                    return "C（不及格）("+this.value+")";
+                  }else if(this.value >=60 && this.value <=75) {
+                    return "B（正常）("+this.value+")";
+                  }else if(this.value >75 && this.value <=90) {
+                    return "A (优秀)("+this.value+")";
+                  }
+                  else {
+                    return "S (卓越)("+this.value+")";
+                  }
+                }
+              }
+          },
+          xAxis: {
+              title: {
+                  text: '时间'
+              }
+          },
+          legend: {
+              layout: 'vertical',
+              align: 'right',
+              verticalAlign: 'middle'
+          },
+          plotOptions: {
+              series: {
+                  label: {
+                      connectorAllowed: false
+                  },
+                  pointStart: 1
+              }
+          },
+          series: [{
+              name: '黄岩',
+              data: [null]
+          }, {
+              name: '傅紫婷',
+              data: [null]
+          }, {
+              name: '秦明杰',
+              data: [null]
+          }, {
+              name: '黄翔',
+              data: [null]
+          }, {
+              name: '郭博',
+              data: [null]
+          }, {
+              name: '杨喜林',
+              data: [null]
+          }, {
+              name: '王禅',
+              data: [null]
+          }, {
+              name: '袁鹏',
+              data: [null]
+          }, {
+              name: '孙文瑞',
+              data: [null]
+          }, {
+              name: '马涛',
+              data: [null]
+          }, {
+              name: '刘林涛',
+              data: [57.5]
+          }],
+          responsive: {
+              rules: [{
+                  condition: {
+                      maxWidth: 500
+                  },
+                  chartOptions: {
+                      legend: {
+                          layout: 'horizontal',
+                          align: 'center',
+                          verticalAlign: 'bottom'
+                      }
+                  }
+              }]
+          }
+      });
+      }
+    </script>
+    <style media="screen">
+      html,body{height:100%;}
+      .container{
+        height:100%;
+        width:90%;
+        margin:0 auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+
+    </div>
+  </body>
+</html>
