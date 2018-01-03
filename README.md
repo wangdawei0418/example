@@ -93,3 +93,19 @@
 ##### 逐层向上寻找祖先级元素，当找到其中一个祖先级元素position属性的属性值为relative时，那么停止继续向上寻找的行为，并根据该祖先级元素进行定位，如果找到根元素（body）时还未找到一个position为relative的元素，那么该元素会根据整个页面（body)进行定位。脱离文档流。
 * fixed    固定的
 * static   静态的（默认值）
+
+### CSS选择器优先级算法
+<table>
+  <thead>
+    <tr>
+      <th>选择器</th>
+      <th>权重分值</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>标签选择器</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
