@@ -125,6 +125,7 @@
     </tr>
   </tbody>
 </table>
+
 #### 当多个选择器分值相同的情况下，以后声明的为准（就近原则）
 #### !important 可无视权重机制。`color:#ff0000 !important;`
 
@@ -135,3 +136,9 @@
 * 持续时间 数字+单位(s代表秒，ms毫秒,进制1000)
 * 延迟时间 数字+单位  可选参数
 * 执行速率 linear线性的 可选参数
+
+### transform 变换
+* translate  移动  类似与相对定位后移动，只产生视觉偏移，不脱离正常文档流。`transform:translate(100px,200px)`
+* scale    缩放 `transform:scale(1.1)`
+* rotate   旋转 `transform:rotate(90deg)`
+* skew     斜切 `transform:skew(30deg)`
