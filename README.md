@@ -107,5 +107,21 @@
       <td>标签选择器</td>
       <td>1</td>
     </tr>
+    <tr>
+      <td>类选择器</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>ID</td>
+      <td>1000</td>
+    </tr>
+    <tr>
+      <td>通配符*</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>包含选择器</td>
+      <td>以每个单独的选择器分值做加法运算之和</td>
+    </tr>
   </tbody>
 </table>
