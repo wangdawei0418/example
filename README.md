@@ -125,8 +125,8 @@
     </tr>
   </tbody>
 </table>
-##### 当多个选择器分值相同的情况下，以后声明的为准（就近原则）
-##### !important 可无视权重机制。`color:#ff0000 !important;`
+#### 当多个选择器分值相同的情况下，以后声明的为准（就近原则）
+#### !important 可无视权重机制。`color:#ff0000 !important;`
 
 
 ### transition 过渡
