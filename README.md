@@ -151,7 +151,7 @@
 * 执行次数:数字 || infinite
 
 * `animation:myAnimation 3s infinite`
-* `@keyframes myAnimation{
+`@keyframes myAnimation{
   0%{
   }
   33%{
