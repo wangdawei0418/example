@@ -147,7 +147,7 @@
 #### animation与transition的不同
 * 执行时机;animation在页面刚进入时就可执行,transition需要鼠标移动
 * animation有关键帧的特性,它执行分步动画,而transition不行
-#### `animation:动画名 执行时间 执行次数`
+#### `animation:动画名 执行时间 执行次数 sulv yanchi`
 * 执行次数:数字 || infinite
 
 * `animation:myAnimation 3s infinite`
