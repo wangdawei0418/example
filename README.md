@@ -142,3 +142,31 @@
 * scale    缩放 `transform:scale(1.1)`
 * rotate   旋转 `transform:rotate(90deg)`
 * skew     斜切 `transform:skew(30deg)`
+
+### css动画(animation)
+#### animation与transition的不同
+* 执行时机;animation在页面刚进入时就可执行,transition需要鼠标移动
+* animation有关键帧的特性,它执行分步动画,而transition不行
+#### `animation:动画名 执行时间 执行次数`
+* 执行次数:数字 || infinite
+
+* `animation:myAnimation 3s infinite`
+* `@keyframes myAnimation{
+  0%{
+  }
+  33%{
+    transform:rotate(30deg);
+    background-color:#f33;
+    margin-left:0;
+  }
+  66%{
+    margin-left:300px;
+    transform:rotate(0deg);
+    background-color:#f33;
+  }
+  100%{
+    transform:rotate(-360deg);
+    margin-left:0px;
+    background-color:orange;
+  }
+}`
