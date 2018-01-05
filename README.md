@@ -150,6 +150,8 @@
 #### `animation:动画名 执行时间 执行次数 sulv yanchi`
 * 执行次数:数字 || infinite
 
+* `animation-fill-mode:forwards` 执行完动画时保持在最后一个关键帧时的状态
+
 * `animation:myAnimation 3s infinite`
 `@keyframes myAnimation{
   0%{
@@ -172,7 +174,7 @@
 }`
 
 #### CSS选择器
-* > 子元素选择器
+* &gt; 子元素选择器
 * [属性名=属性值] 属性选择器
 * + 相邻兄弟选择器
 * :first-child 集合中第一个元素
@@ -183,3 +185,7 @@
 
 #### 光标状态(cursor)
 * pointer (手型)
+
+
+#### 背景图片自适应问题
+* background-size

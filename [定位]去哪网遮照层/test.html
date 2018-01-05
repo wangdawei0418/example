@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+      *{margin:0;padding:0;}
+      .mask{
+        width:300px;
+        height:424px;
+        position:relative;
+      }
+      .mask-control{
+        color:#fff;
+        position:absolute;
+        top:45%;
+        font-family: Arial;
+        cursor:pointer;
+        transition:all .5s;
+        opacity:.8;
+        font-size:42px;
+        font-weight:bold;
+      }
+      .mask-control:hover{
+        transform:scale(1.1);
+        opacity:1;
+      }
+      .prev{left:15px;}
+      .next{right:15px;}
+    </style>
+  </head>
+  <body>
+    <div class="mask">
+      <img src="position.jpg" alt="">
+      <span class="prev mask-control">&lt;</span>
+      <span class="next mask-control">&gt;</span>
+    </div>
+  </body>
+</html>

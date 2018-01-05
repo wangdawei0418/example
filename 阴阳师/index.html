@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+    *{margin:0;padding:0}
+    .banner{
+      height:585px;
+      background-image:url(banner.jpg);
+      background-size:100%;
+    }
+    .content{
+      width:1000px;
+      margin:0 auto;
+    }
+    .relative{
+      position:relative;
+      height:585px;
+    }
+    .left{
+      left:208px;
+      animation:lAnimation 1.2s .5s;
+    }
+    .right{
+      right:208px;
+      animation:rAnimation 1.2s .5s;
+    }
+    .banner-img{
+      position:absolute;
+      bottom:0;
+      opacity:0;
+      animation-fill-mode: forwards;
+    }
+    @keyframes lAnimation {
+        0%{}
+        100%{
+          left:50px;
+          opacity:1;
+        }
+    }
+    @keyframes rAnimation {
+        0%{}
+        100%{
+          right:50px;
+          opacity:1;
+        }
+    }
+    </style>
+  </head>
+  <body>
+    <div class="banner">
+      <div class="content relative">
+        <img src="role1_6cb0cdd.png" class="banner-img left" alt="">
+        <img src="role2_a804294.png" class="banner-img right" alt="">
+      </div>
+    </div>
+  </body>
+</html>
