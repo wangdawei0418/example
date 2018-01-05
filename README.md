@@ -5,8 +5,8 @@
 
 #### 解决办法：
   * 在坍塌元素之前，添加一个空的块级元素，并为其设置clear:both属性
-
   * 为父级元素设置overflow:hidden属性
+  * 使用伪元素:after并设置clear属性`content:" ";clear:both;display:block;`
 ### 图片格式的选择
   * _jgp_
   适用于写实图片，不支持透明
@@ -170,3 +170,16 @@
     background-color:orange;
   }
 }`
+
+#### CSS选择器
+* > 子元素选择器
+* [属性名=属性值] 属性选择器
+* + 相邻兄弟选择器
+* :first-child 集合中第一个元素
+* :after 伪元素(常常用来解决清浮问题(高度坍塌))
+* :first-of-type 匹配子集合中的第一个元素
+* :nth-child(_arguments_) `argument`:数字 || 2n 3n .. || 2n - 1 || odd,even
+
+
+#### 光标状态(cursor)
+* pointer (手型)
