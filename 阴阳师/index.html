@@ -46,9 +46,54 @@
           opacity:1;
         }
     }
+    .top{
+      height:100px;
+      background-color:rgba(255,255,255,.7);
+      position:fixed;
+      width:100%;
+      line-height:100px;
+      top:0;
+      left:0;
+      z-index: 2;
+    }
+    .top a{
+      text-decoration:none;
+      color:#333;
+      font-size:16px;
+    }
+    body{font-family: "微软雅黑";}
+    li{list-style:none;}
+    .sec-nav{
+      width:100%;
+      position:absolute;
+      overflow:hidden;
+      top:100px;
+      left:0;
+      background-color:#e1ebeb;
+      height:0;
+      transition:all .5s .2s;
+    }
+    .top-content{height:100px;position:relative;}
+    .top li:hover .sec-nav{
+      height:200px;
+    }
     </style>
   </head>
   <body>
+    <div class="top">
+      <div class="top-content">
+        <div class="content">
+          <ul>
+            <li>
+              <a href="#">游戏特色</a>
+              <div class="sec-nav">
+                  sdfdsafadsfsfsdf
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
     <div class="banner">
       <div class="content relative">
         <img src="role1_6cb0cdd.png" class="banner-img left" alt="">
