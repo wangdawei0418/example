@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>二级导航的实现</title>
+    <style media="screen">
+      *{margin:0;padding:0}
+      li{list-style:none;}
+      .nav{background-color:#000;height:42px;line-height:42px;}
+      .nav>li{color:#FFF;float:left;position:relative;margin-right:10px;}
+      .sec-nav{
+        background-color:#000;
+        position:absolute;
+        top:42px;
+        left:0;
+        width:100%;
+        transition:all .5s;
+        height:0px;
+      }
+      .nav>li:hover .sec-nav{
+        height:126px;
+      }
+    </style>
+  </head>
+  <body>
+    <ul class="nav">
+      <li>
+        导航1
+        <div class="sec-nav">
+          <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+          </ul>
+        </div>
+      </li>
+      <li>导航2</li>
+      <li>导航3</li>
+      <li>导航4</li>
+    </ul>
+  </body>
+</html>
