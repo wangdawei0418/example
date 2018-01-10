@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+      *{margin:0;padding:0}
+      li{list-style:none;}
+      .mask{
+        width:130px;
+        position:relative;
+      }
+      .mask .img{
+        width:130px;
+        height:106px;
+        background-image:url(sprite.png);
+        background-position: -945px -605px;
+      }
+      .wrap{
+        width:50%;
+        margin:0 auto;
+        background-color:orange;
+      }
+      .white-bg{
+        width:130px;
+        top:0;
+        left:0;
+        height:106px;
+        position:absolute;
+        background-color:#000;
+        opacity:0;
+        transition:all .5s;
+      }
+      .white-bg:hover{
+        opacity:.3;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="mask">
+        <div class="white-bg"></div>
+        <div class="img"></div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>highcharts</title>
+    <style media="screen">
+      html,body{height:100%;}
+      *{margin:0;padding:0;}
+      .video video{
+        position:absolute;
+        left:0;
+        z-index:-1;
+        top:0;
+        width:100%;
+      }
+      .mask{
+        background-color:rgba(0,0,0,.4);
+        height:100%;
+        text-align:center;
+        color:#FFF;
+        padding-top:100px;
+      }
+      .video{
+        height:100%;
+        width:100%;
+        overflow:hidden;
+      }
+      .mask button{
+        background-color: #7c82ff;
+        border-color: #7c82ff;
+        color: #fff;
+        border-radius: 2px;
+        font-size: 16px;
+        padding: 8px 20px;
+        border:none;
+      }
+      .mask p,.mask h2{
+        margin-bottom:30px;
+        font-size:18px;
+      }
+      .mask h2{font-size:38px;}
+    </style>
+  </head>
+  <body>
+    <div class="video">
+      <div class="mask">
+        <img src="logo.svg">
+        <h2>让数据可视化更简单</h2>
+        <p>兼容 IE6+、完美支持移动端、图表类型丰富、方便快捷的 HTML5 交互性图表库
+查看实例</p>
+        <p><button>查看实例</button></p>
+      </div>
+      <video src="images-videoo.mp4" loop autoplay></video>
+    </div>
+  </body>
+</html>
