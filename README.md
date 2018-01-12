@@ -224,6 +224,11 @@
   - 4. 使用bootstrap制作页面
 
 
+### 阴影
+  * 盒阴影(box-shadow)
+  * _box-shadow: 水平偏移量 垂直偏移量 模糊半径_
+  * text-shadow 文字
+
 
 ### 元素文字垂直方向居中对其方案
     * _vertical-align_
