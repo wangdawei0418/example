@@ -135,8 +135,8 @@ h1,h2,h3,h4,h5,h6{font-weight:normal;}
   transition:all .5s
 }
 .item:hover h2{
-  text-indent:3px;
   color:#dd4012;
+  text-indent:3px;
 }
 .item ul{
   padding-left:5px;
