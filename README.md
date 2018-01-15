@@ -239,3 +239,12 @@
     * 1.不能设置margin
     * 2.不能设置float
     * 3.不能设置绝对定位
+
+
+
+## Javascript
+  * 脚本语言(解释器) 不用编译
+  * 历史背景 (表单验证)
+  * 使用Javascript方式
+    - 内部引用 `<script></script>`
+    - 外部引用  `<script src="外部js文件路径"></script>`
