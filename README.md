@@ -404,6 +404,9 @@
 
 ### 对象
 #### 数据的有序集合
+  * 对象的种类
+    - 自定义对象
+    - 内置对象
   * 对象的声明
     ```
       var obj = {
@@ -431,3 +434,8 @@
         i       //属性名
       }
     ```
+  * 对象属性的删除
+    - delete运算符 `delete object.属性名`
+### DOM
+  * DOM其实就是Javascript里面的document内置对象
+  * write(arg) arg:String  向页面里写入arg内容
