@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script>
+      //实参个数不确定
+
+    设计一个函数,该函数期望接受任意个数的实参
+    该函数会返回实参累加之和
+    注:数据类型的智能监测:如果遇到非Number类型
+       的实参时,程序忽略掉该参数,不将该实参数计入
+       到累加运算中.并在程序的最后向控制台输出:
+       "警告:在第xxx个实参位上发现意外的数据类型"
+
+      function add(){
+        var n = 0;
+        var result = 0; //累加结果只和
+        while(n < arguments.length){
+          result = result + arguments[n]
+          n++;
+        }
+        return result;
+      }
+      add(10,5,100,"王大伟",5,2000)
+    </script>
+  </head>
+  <body>
+
+  </body>
+</html>

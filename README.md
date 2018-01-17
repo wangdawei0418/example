@@ -309,7 +309,31 @@
     if(exp){
       语句块;
     }
+
   ```
+  ```
+    if(exp){
+      语句块1
+    }
+    else{
+      语句块2
+    }
+
+  ```
+  if(exp){
+    if(exp){
+
+    }
+    if(exp){
+
+    }
+    if(exp){
+
+    }
+  }
+  else{
+    
+  }
   ```
     while(exp){
       语句块;
