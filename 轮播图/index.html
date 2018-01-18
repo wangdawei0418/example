@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+      *{margin:0;padding:0;}
+      li{list-style:none;}
+      .wrap{
+        width:1000px;
+        margin:100px auto;
+        position:relative;
+      }
+      .wrap li{
+        display:none;
+      }
+      .wrap .show{
+        display:block;
+      }
+      #prev,#next{
+        position:absolute;
+        top:45%;
+        cursor:pointer;
+        transition:all .5s;
+        opacity: .7;
+      }
+      #prev:hover,#next:hover{
+        opacity: 1;
+        transform:scale(1.1);
+      }
+      #prev{
+        left:20px;
+      }
+      #next{
+        right:20px;
+      }
+      #dot-nav{
+        position:absolute;
+        bottom:20px;
+        left:42%;
+      }
+      #dot-nav span{
+        display:block;
+        float:left;
+        width:16px;
+        height:16px;
+        border-radius:50%;
+        background-color:#fff;
+        margin-right:8px;
+        cursor:pointer;
+        font-size:0;
+      }
+      #dot-nav .focus{
+        background-color:#f99;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <ul>
+        <li class="show"><img src="images/1.jpg" /></li>
+        <li><img src="images/2.jpg" /></li>
+        <li><img src="images/3.jpg" /></li>
+        <li><img src="images/4.jpg" /></li>
+        <li><img src="images/5.jpg" /></li>
+        <li><img src="images/6.jpg" /></li>
+      </ul>
+      <img src="images/l.png" id="prev" alt="">
+      <img src="images/r.png" id="next" alt="">
+      <div id="dot-nav">
+        <span class="focus">0</span>
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+        <span>4</span>
+        <span>5</span>
+      </div>
+     </div>
+     <script>
+        // 点击向后箭头,切换到下一张
+        // 1.为向后箭头绑定点击事件
+        // 2.把当前显示的图片隐藏(干掉当前显示的元素class类名)
+        // 3.把下一张图片显示(为下一张加上show这个类名)
+
+        //获取向后箭头的Node节点
+        var next = document.getElementById("next")
+        var imgList = document.getElementsByTagName("li");
+        var navList = document.getElementsByTagName("span");
+        var n = 0;  //记录当前显示的是第几张
+        //为向后箭头绑定单击事件
+        next.onclick = function(){
+          //正常情况
+          if(n < imgList.length - 1){
+            //覆盖掉第一张图片的show类名
+            imgList[n].className = "";
+            // 把第下一张图片显示出来
+            imgList[n+1].className = "show";
+
+            //小圆点显示样式干掉
+            navList[n].className = "";
+            //将N校正到正确的位置
+            n++;
+          }
+          //特殊情况
+          else{
+            //覆盖掉第一张图片的show类名
+            imgList[n].className = "";
+            // 把第一张图片显示出来
+            imgList[0].className = "show";
+
+            //小圆点显示样式干掉
+            navList[n].className = "";
+            //将N校正到正确的位置
+            n = 0;
+          }
+
+          navList[n].className = "focus";
+        }
+
+        //小圆点点击逻辑
+        for(var i = 0; i < navList.length;i++){
+          //为每个小圆点绑定点击事件
+          navList[i].onclick = function(){
+            //隐藏当前显示的图片
+            imgList[n].className = "";
+            //去掉小圆点背景色
+            navList[n].className = "";
+            //将N校正到正确的位置
+            n = Number(this.innerHTML)
+            imgList[n].className = "show";
+            navList[n].className = "focus";
+          }
+        }
+
+     </script>
+  </body>
+</html>
