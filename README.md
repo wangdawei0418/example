@@ -441,10 +441,17 @@
   * write(arg) arg:String  向页面里写入arg内容
 #### DOM节点的查询
   * getElementById(arg)
-    - arg:String
+    - arg:String ID值
     - 返回值:Object (Node节点)
     - 返回与argID值相匹配的页面元素节点
-
+  * getElementsByTagName(arg)
+    - arg:String 标签名
+    - 返回值:Object (NodeList)
+    - NodeList 类数组
 #### Node节点的属性和方法
   * innerHTML 返回Node节点开始标签与结束标签之间的内容 String
   * className 返回Node节点的class属性所对应的属性值  String  
+
+#### 元素节点的类型
+  * Node节点
+  * NodeList 类数组  若干个Node节点的一个集合
