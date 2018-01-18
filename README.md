@@ -455,7 +455,8 @@
 #### Node节点的属性和方法
   * innerHTML 返回Node节点开始标签与结束标签之间的内容 String
   * className 返回Node节点的class属性所对应的属性值  String  
-
+  * getElementsByClassName()
+  * getElementsByTagName()
 #### 元素节点的类型
   * Node节点
   * NodeList 类数组  若干个Node节点的一个集合
