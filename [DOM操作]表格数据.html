@@ -4,11 +4,6 @@
     <meta charset="utf-8">
     <title>[DOM操作]航班起降数据</title>
     <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-    <style media="screen">
-      .gray{
-        background-color:#f7f7f7;
-      }
-    </style>
   </head>
   <body>
     <h2>XI'AN XIANYANG INT'L AIRPORT (陕西 西安 CN) ZLXY / XIY 近港</h2>
@@ -185,14 +180,5 @@
         </tr>
       </tbody>
     </table>
-    <script>
-      // 获取页面中所有tr元素
-      var trList = document.getElementsByTagName("tr");
-      for(var i = 0; i < trList.length;i++){
-        if(i % 2 == 0){
-          trList[i].className = "gray"
-        }
-      }
-    </script>
   </body>
 </html>
