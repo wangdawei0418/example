@@ -448,6 +448,10 @@
     - arg:String 标签名
     - 返回值:Object (NodeList)
     - NodeList 类数组
+  * getElementsByClassName(arg)
+    - arg:String 类名
+    - 返回值:Object (NodeList)
+    - 在不高于IE8的浏览器中不会被识别
 #### Node节点的属性和方法
   * innerHTML 返回Node节点开始标签与结束标签之间的内容 String
   * className 返回Node节点的class属性所对应的属性值  String  

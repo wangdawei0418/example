@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>[DOM操作]航班起降数据</title>
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <style media="screen">
+      .gray{
+        background-color:#f7f7f7;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>XI'AN XIANYANG INT'L AIRPORT (陕西 西安 CN) ZLXY / XIY 近港</h2>
+    <hr>
+    <table class="table">
+      <thead>
+        <th>编号</th>
+        <th>标识符</th>
+        <th>机型</th>
+        <th>始发地</th>
+        <th>出发</th>
+        <th>到达</th>
+      </tead>
+      <tbody>
+        <tr>
+          <td class="num">x</td>
+          <td>CES2263</td>
+          <td>	Kun</td>
+          <td>ing Changshui Int'l (KMG)</td>
+          <td>09:40 CST</td>
+          <td>11:25 CST</td>
+        </tr>
+        <tr>
+          <td class="num">x</td>
+          <td>CHH7895</td>
+          <td>B738</td>
+          <td>Urumqi Diwopu Int'l (URC)</td>
+          <td>08:25 CST</td>
+          <td>11:22 CST</td>
+        </tr>
+        <tr>
+          <td class="num">x</td>
+          <td>CCA1743</td>
+          <td>A320</td>
+          <td>Hangzhou Xiaoshan Int'l (HGH)</td>
+          <td>09:08 CST</td>
+          <td>11:30 CST</td>
+        </tr>
+        <tr>
+          <td class="num">x</td>
+          <td>CSZ9225</td>
+          <td>B738</td>
+          <td>廣州白雲國際機場 (CAN)</td>
+          <td>09:13 CST</td>
+          <td>11:28 CST</td>
+        </tr>
+        <tr>
+          <td class="num">x</td>
+          <td>CCA1289</td>
+          <td>A321</td>
+          <td>Beijing Capital Int'l (PEK)</td>
+          <td>09:18 CST</td>
+          <td>11:24 CST</td>
+        </tr>
+        <tr>
+          <td class="num">x</td>
+          <td>CSN3275</td>
+          <td>	Nan</td>
+          <td>ing Wuxu Int'l (NNG)</td>
+          <td>09:12 CST</td>
+          <td>11:20 CST</td>
+        </tr>
+        <tr>
+          <td class="num">x</td>
+          <td>CSC8595</td>
+          <td>A321</td>
+          <td>Harbin Taiping Int'l (HRB)</td>
+          <td>07:50 CST</td>
+          <td>11:10 CST</td>
+        </tr>
+        <tr>
+          <td class="num">x</td>
+          <td>CES2126</td>
+          <td>A319</td>
+          <td>武漢國際機場 (WUH)</td>
+          <td>09:53 CST</td>
+          <td>11:14 CST</td>
+        </tr>
+        <tr>
+          <td class="num">x</td>
+          <td>CES2104</td>
+          <td>A321</td>
+          <td>Beijing Capital Int'l (PEK)</td>
+          <td>09:08 CST</td>
+          <td>11:17 CST</td>
+        </tr>
+        <tr>
+          <td class="num">x</td>
+          <td>CSZ9020</td>
+          <td>B738</td>
+          <td>Shenzhen Bao'an Int'l (SZX)</td>
+          <td>08:34 CST</td>
+          <td>11:13 CST</td>
+        </tr>
+        <tr>
+          <td class="num">x</td>
+          <td>CHH7897</td>
+          <td>B738</td>
+          <td>Sanya Phoenix Int'l (SYX)	08:21 CST		11:0CES2263		Kunming Changshui Int'l (KMG)</td>
+          <td>09:40 CST</td>
+          <td>11:25 CST</td>
+        </tr>
+        <tr>
+          <td class="num">x</td>
+          <td>CHH7895</td>
+          <td>B738</td>
+          <td>Urumqi Diwopu Int'l (URC)</td>
+          <td>08:25 CST</td>
+          <td>11:22 CST</td>
+        </tr>
+        <tr>
+          <td class="num">x</td>
+          <td>CCA1743</td>
+          <td>A320</td>
+          <td>Hangzhou Xiaoshan Int'l (HGH)</td>
+          <td>09:08 CST</td>
+          <td>11:30 CST</td>
+        </tr>
+        <tr>
+          <td class="num">x</td>
+          <td>CSZ9225</td>
+          <td>B738</td>
+          <td>廣州白雲國際機場 (CAN)</td>
+          <td>09:13 CST</td>
+          <td>11:28 CST</td>
+        </tr>
+        <tr>
+          <td class="num">x</td>
+          <td>CCA1289</td>
+          <td>A321</td>
+          <td>Beijing Capital Int'l (PEK)</td>
+          <td>09:18 CST</td>
+          <td>11:24 CST</td>
+        </tr>
+        <tr>
+          <td class="num">x</td>
+          <td>CSC8595</td>
+          <td>A321</td>
+          <td>Harbin Taiping Int'l (HRB)</td>
+          <td>07:50 CST</td>
+          <td>11:10 CST</td>
+        </tr>
+        <tr>
+          <td class="num">x</td>
+          <td>CES2126</td>
+          <td>A319</td>
+          <td>武漢國際機場 (WUH)</td>
+          <td>09:53 CST</td>
+          <td>11:14 CST</td>
+        </tr>
+        <tr>
+          <td class="num">x</td>
+          <td>CES2104</td>
+          <td>A321</td>
+          <td>Beijing Capital Int'l (PEK)</td>
+          <td>09:08 CST</td>
+          <td>11:17 CST</td>
+        </tr>
+        <tr>
+          <td class="num">x</td>
+          <td>CSZ9020</td>
+          <td>B738</td>
+          <td>Shenzhen Bao'an Int'l (SZX)</td>
+          <td>08:34 CST</td>
+          <td>11:13 CST</td>
+        </tr>
+        <tr>
+          <td class="num">x</td>
+          <td>CHH7897</td>
+          <td>B738</td>
+          <td>Sanya Phoenix Int'l (SYX)</td>
+          <td>08:21 CST</td>
+          <td>11:04 CST</td>
+        </tr>
+      </tbody>
+    </table>
+    <script>
+      // 获取页面中所有tr元素
+      var trList = document.getElementsByTagName("tr");
+      for(var i = 0; i < trList.length;i++){
+        if(i % 2 == 0){
+          trList[i].className = "gray"
+        }
+      }
+    </script>
+  </body>
+</html>
