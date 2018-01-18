@@ -3,14 +3,17 @@
   <head>
     <meta charset="utf-8">
     <title></title>
-    <!-- DOM
-    对象
-     -->
-    <script type="text/javascript">
-      document.write("<h2>123</h2>")
-    </script>
   </head>
   <body>
+    <div class="a123" id="div1">我是DIV1元素121231233</div>
 
+    <script>
+      var obj = document.getElementById("div1");
+      // 返回div1元素里面的内容
+      // console.log(obj.innerHTML)
+      // 修改obj对象里面的innerHTML属性里面的属性值
+      // obj.innerHTML = "abcdefg"
+      document.getElementById("div1").className = "js-abc"
+    </script>
   </body>
 </html>

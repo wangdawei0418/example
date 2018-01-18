@@ -439,3 +439,12 @@
 ### DOM
   * DOM其实就是Javascript里面的document内置对象
   * write(arg) arg:String  向页面里写入arg内容
+#### DOM节点的查询
+  * getElementById(arg)
+    - arg:String
+    - 返回值:Object (Node节点)
+    - 返回与argID值相匹配的页面元素节点
+
+#### Node节点的属性和方法
+  * innerHTML 返回Node节点开始标签与结束标签之间的内容 String
+  * className 返回Node节点的class属性所对应的属性值  String  
