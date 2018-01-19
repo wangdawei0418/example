@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>[DOM操作]航班起降数据</title>
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <style media="screen">
+      .gray{
+        background-color:#f7f7f7;
+      }
+      .hide{
+        display:none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="right">
+
+      <h3>XI'AN XIANYANG INT'L AIRPORT (陕西 西安 CN) ZLXY / XIY 离港</h3>
+      <hr>
+      <p id="insertWrap">
+        标识符:<input type="text">
+        机型:<input type="text">
+        目的地:<input type="text">
+        出发:<input type="text">
+        到达:<input type="text">
+      </p>
+      <p>
+        <input type="button" class="btn btn-primary" value="插入数据" id="insertData">
+      </p>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>编号</th>
+            <th>标识符</th>
+            <th>机型</th>
+            <th>目的地</th>
+            <th>出发</th>
+            <th>到达</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="num">*</td>
+            <td>AAR348</td>
+            <td>A321</td>
+            <td>Incheon Int'l (ICN)</td>
+            <td>15:10 CST</td>
+            <td>18:14 KST</td>
+          </tr>
+          <tr>
+            <td class="num">*</td>
+            <td>CHH7841</td>
+            <td>B738</td>
+            <td>Shanghai Pudong Int'l (PVG)</td>
+            <td>15:08 CST</td>
+            <td>17:13 CST</td>
+          </tr>
+          <tr>
+            <td class="num">*</td>
+            <td>FZA6695</td>
+            <td>B738</td>
+            <td>Quanzhou Jinjiang (JJN)</td>
+            <td>15:05 CST</td>
+            <td>17:45 CST</td>
+          </tr>
+          <tr>
+            <td class="num">*</td>
+            <td>CHH7873</td>
+            <td>B738</td>
+            <td>Shenzhen Bao'an Int'l (SZX)</td>
+            <td>15:02 CST</td>
+            <td>18:00 CST</td>
+
+          </tr>
+          <tr>
+            <td class="num">*</td>
+            <td>CHH7509</td>
+            <td>B738</td>
+            <td>Fuzhou Changle Int'l (FOC)</td>
+            <td>	15:00 CST</td>
+            <td>17:28 CST</td>
+          </tr>
+          <tr>
+            <td class="num">*</td>
+            <td>OKA2885</td>
+            <td>B738</td>
+            <td>Urumqi Diwopu Int'l (URC)</td>
+            <td>	14:54 CST</td>
+            <td>18:29 CST</td>
+          </tr>
+          <tr>
+            <td class="num">*</td>
+            <td>CES2321</td>
+            <td>A319</td>
+            <td>Karamay (KRY)</td>
+            <td>	14:51 CST</td>
+            <td>18:26 CST</td>
+          </tr>
+          <tr>
+            <td class="num">*</td>
+            <td>CES2259</td>
+            <td>A320</td>
+            <td>Lüliang (LLV)</td>
+            <td>	14:44 CST</td>
+            <td>15:31 CST</td>
+          </tr>
+          <tr>
+            <td class="num">*</td>
+            <td>CES2271</td>
+            <td>A320</td>
+            <td>Changchun Longjia Int'l (CGQ)</td>
+            <td>	14:40 CST</td>
+            <td>17:11 CST</td>
+          </tr>
+          <tr>
+            <td class="num">*</td>
+            <td>CXA855</td>
+            <td>B738</td>
+            <td>Fuzhou Changle Int'l (FOC)</td>
+            <td>	14:39 CST</td>
+            <td>16:38 CST</td>
+          </tr>
+          <tr>
+            <td class="num">*</td>
+            <td>CSZ9273</td>
+            <td>A320</td>
+            <td>Shubuling (LYI)</td>
+            <td>	14:37 CST</td>
+            <td>16:05 CST</td>
+          </tr>
+          <tr id="tem" class="hide">
+            <td class="num"></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <script>
+      // 获取页面中所有tr元素
+      var trList = document.getElementsByTagName("tr");
+      // 获取页面中所有class值为num的元素
+      var tableList = document.getElementsByTagName("table");
+      var rightNumList = tableList[0].getElementsByClassName("num");
+      //隔行变色
+      for(var i = 0; i < trList.length;i++){
+        if(i % 2 == 0){
+          if(trList[i].className == ""){
+            trList[i].className = "gray"
+          }
+          else{
+            trList[i].className = trList[i].className + " gray"
+          }
+        }
+      }
+      //自动右边生成行号
+      for(var n = 0; n < rightNumList.length; n++){
+        rightNumList[n].innerHTML = String(n + 1)
+      }
+      var insertBtn = document.getElementById("insertData");
+      var insertWrap = document.getElementById("insertWrap");
+      var inputList = insertWrap.getElementsByTagName("input");
+      var tr = document.getElementById("tem");
+      var tbody = document.getElementsByTagName("tbody")[0]
+      insertBtn.onclick = function(){
+        // 1.获取输入数据
+        // 2.为td赋值
+        // 3.向tbody里插入整个tr
+        var newTr = tr.cloneNode(true);
+        var tdList = newTr.getElementsByTagName("td");
+        for(var i = 0; i < inputList.length;i++){
+          tdList[i + 1].innerHTML = inputList[i].value
+          inputList[i].value = "";
+        }
+        tbody.appendChild(newTr)
+        if(newTr.className == "gray hide"){
+          newTr.className = "gray"
+        }
+        else{
+          newTr.className = ""
+        }
+
+        //自动右边生成行号
+        var rightNumList = tableList[0].getElementsByClassName("num");
+        for(var n = 0; n < rightNumList.length; n++){
+          rightNumList[n].innerHTML = String(n + 1)
+        }
+      }
+
+
+    </script>
+  </body>
+</html>

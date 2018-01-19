@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>表格插入简单版</title>
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <style media="screen">
+      .tem{display:none;}
+    </style>
+  </head>
+  <body>
+    <h2>学生信息管理系统</h2>
+    <div class="dataWrap">
+      姓名:<input type="text" id="username">
+      年龄:<input type="text" id="age">
+      性别:
+      <select id="sex">
+        <option value="男">男</option>
+        <option value="女">女</option>
+      </select>
+      <button type="button" id="insertData">插入数据</button>
+    </div>
+    <table  class="table">
+      <thead>
+        <tr>
+          <th>学号</th>
+          <th class="name">姓名</th>
+          <th class="age">年龄</th>
+          <th>性别</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="tem">
+          <td class="num"></td>
+          <td class="name"></td>
+          <td class="age"></td>
+          <td class="sex"></td>
+        </tr>
+      </tbody>
+    </table>
+    <script>
+      //插入按钮
+      var button = document.getElementById("insertData");
+      var tem = document.getElementsByClassName("tem")[0];
+      var tbody = document.getElementsByTagName("tbody")[0];
+      var sex = document.getElementById("sex");
+      var n = 1;  //当前插入的行数
+      button.onclick = function(){
+        // 获取文本框中的数据
+        var username = document.getElementById("username");
+        var age = document.getElementById("age");
+
+        //克隆新的一行
+        var newTr = tem.cloneNode(true);
+        // 将新行显示
+        newTr.className = ""
+        // 给新行赋值
+        newTr.getElementsByClassName("name")[0].innerHTML = username.value;
+        newTr.getElementsByClassName("age")[0].innerHTML = age.value;
+        newTr.getElementsByClassName("sex")[0].innerHTML = sex.value;
+        newTr.getElementsByClassName("num")[0].innerHTML = n++;
+        // 插入操作
+        tbody.appendChild(newTr)
+        //清空文本框中的数据
+        username.value = "";
+        age.value = "";
+      }
+    </script>
+  </body>
+</html>

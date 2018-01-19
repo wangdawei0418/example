@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+      #div1{
+        width:300px;
+        height:300px;
+        border:1px solid #f00;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="div1">
+      <h2></h2>
+      <h3></h3>
+    </div>
+    <p class="p1">我是p元素</p>
+    <button id="btn">插入</button>
+    <script>
+      var btn = document.getElementById("btn");
+      var div1 = document.getElementById("div1")
+      var p = document.getElementsByClassName("p1")[0];
+      btn.onclick = function(){
+        // div1.appendChild(p)
+        var newP = p.cloneNode(true);
+        div1.appendChild(newP)
+      }
+    </script>
+  </body>
+</html>
