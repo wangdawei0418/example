@@ -457,12 +457,15 @@
   * className 返回Node节点的class属性所对应的属性值  String  
   * getElementsByClassName()
   * getElementsByTagName()
+  * value 返回Node节点的value属性所对应的属性值
+  * checked 返回当前单选按钮或复选框选中的状态 Boolean
+
 #### 元素节点的类型
   * Node节点
   * NodeList 类数组  若干个Node节点的一个集合
 ### 事件
-    * 当某件事情发生时,触发执行的代码
-  * ```
+  * 当某件事情发生时,触发执行的代码
+  ```
     node.onclick = function(){
       代码块
     }

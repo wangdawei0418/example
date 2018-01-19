@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h2>用户注册页面</h2>
+    <hr>
+    <p>用户名:<input type="text" name="" value="" id="userName"></p>
+    <p>密码:<input type="password" id="password" name="" value=""></p>
+    <p>
+      城市:
+      <select class="" name="">
+        <option value="西安">西安</option>
+        <option value="咸阳">咸阳</option>
+        <option value="渭南">渭南</option>
+        <option value="宝鸡">宝鸡</option>
+        <option value="铜川">铜川</option>
+      </select>
+    </p>
+    <p>
+      性别:
+      <input type="radio" checked name="sex" id="male" class="sex" value="">男
+      <input type="radio" name="sex" id="female" class="sex" value="">女
+    </p>
+    <button id="btn">提交</button>
+    <script>
+      var btn = document.getElementById('btn')
+      var userName = document.getElementById("userName");
+      var password = document.getElementById("password");
+      var select = document.getElementsByTagName("select")[0]
+      var male = document.getElementById("male");
+      var female = document.getElementById("female");
+      btn.onclick = function(){
+        if(male.checked){
+          var sex = "男";
+        }
+        else{
+          var sex = "女";
+        }
+
+        var result = "用户名: " + userName.value + " 密码: " + password.value + " 城市:" + select.value + " 性别:" + sex
+        console.log(result)
+      }
+    </script>
+  </body>
+</html>
