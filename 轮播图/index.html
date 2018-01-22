@@ -76,7 +76,7 @@
         <span>5</span>
       </div>
      </div>
-     <script>
+     <!-- <script> -->
         // 点击向后箭头,切换到下一张
         // 1.为向后箭头绑定点击事件
         // 2.把当前显示的图片隐藏(干掉当前显示的元素class类名)
@@ -132,6 +132,20 @@
           }
         }
 
+     </script>
+     <script>
+var n = 0;  //记录当前所在的张数
+var navList = document.getElementById("dot-nav").getElementsByTagName("span");
+var liList = document.getElementsByTagName("li");
+for(var i = 0; i < navList.length;i++){
+  navList[i].onclick = function(){
+    liList[n].className = "";
+    navList[n].className = "";
+    liList[Number(this.innerHTML)].className = "show"
+    n = Number(this.innerHTML)
+    this.className = "focus"
+  }
+}
      </script>
   </body>
 </html>
