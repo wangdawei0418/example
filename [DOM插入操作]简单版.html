@@ -54,16 +54,18 @@
         var newTr = tem.cloneNode(true);
         // 将新行显示
         newTr.className = ""
-        // 给新行赋值
-        newTr.getElementsByClassName("name")[0].innerHTML = username.value;
-        newTr.getElementsByClassName("age")[0].innerHTML = age.value;
-        newTr.getElementsByClassName("sex")[0].innerHTML = sex.value;
-        newTr.getElementsByClassName("num")[0].innerHTML = n++;
-        // 插入操作
-        tbody.appendChild(newTr)
-        //清空文本框中的数据
-        username.value = "";
-        age.value = "";
+        if(username.value && age.value){
+          // 给新行赋值
+          newTr.getElementsByClassName("name")[0].innerHTML = username.value;
+          newTr.getElementsByClassName("age")[0].innerHTML = age.value;
+          newTr.getElementsByClassName("sex")[0].innerHTML = sex.value;
+          newTr.getElementsByClassName("num")[0].innerHTML = n++;
+          // 插入操作
+          tbody.appendChild(newTr)
+          //清空文本框中的数据
+          username.value = "";
+          age.value = "";
+        }
       }
     </script>
   </body>
