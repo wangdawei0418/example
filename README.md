@@ -483,3 +483,5 @@
   * 节点克隆 cloneNode(arg)
     - arg:Boolean 如果为true则连同内容一并克隆 反之不克隆内容
     - 返回调用该方法的节点对象的副本
+  * 节点的查找
+    - parentNode 返回该节点的父级节点
