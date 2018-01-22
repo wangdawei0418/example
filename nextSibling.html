@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <ul>
+      <li>第一个li</li>
+      <li class="aaa">第二个li</li>
+      <li id="sp">第三个li</li>
+      <!-- 我是来捣乱的 -->
+      <li class="aaa">第四个li</li>
+      <li>第五个li</li>
+    </ul>
+    <script>
+      var sp = document.getElementById("sp");
+
+      //替代函数
+      function nextElement(obj){
+        while(obj.nextSibling.nodeType != 1){
+          obj = obj.nextSibling;
+          if(obj.nextSibling.nodeType == 1 || obj.nextSibling.nodeType == 9){
+            return obj.nextSibling;
+          }
+        }
+      }
+
+
+
+
+    </script>
+  </body>
+</html>

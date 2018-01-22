@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>childNodes</title>
+  </head>
+  <body>
+    <ul id="ul">
+      <li>第一个li</li>
+      <li>第二个li</li>
+      <li>第三个li</li>
+      <!-- 我是来捣乱的 -->
+      <li>第四个li</li>
+      <li>第五个li</li>
+    </ul>
+    <script>
+      var ul = document.getElementById("ul");
+
+      //重新实现类childNodes方法
+      function getChilds(obj){
+        var result = [];
+        var n = 0; //记录当前的数组下标
+        var nodes = ul.childNodes;
+        for(var i = 0; i < nodes.length;i++){
+          if(nodes[i].nodeType == 1){
+            result[n++] = nodes[i];
+          }
+        }
+        return result;
+      }
+
+      getChilds(ul)
+
+
+
+    </script>
+  </body>
+</html>
