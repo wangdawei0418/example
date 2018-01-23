@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+      *{margin:0;padding:0;}
+      li{list-style:none;}
+      .wrap{
+        width:1000px;
+        margin:100px auto;
+        position:relative;
+        overflow:hidden;
+        border-radius:6px;
+        height:409px;
+      }
+      #prev,#next{
+        position:absolute;
+        top:45%;
+        cursor:pointer;
+        transition:all .5s;
+        opacity: .7;
+      }
+      #prev:hover,#next:hover{
+        opacity: 1;
+        transform:scale(1.1);
+      }
+      #prev{
+        left:20px;
+      }
+      #next{
+        right:20px;
+      }
+      .wrap ul{
+        width:6000px;
+      }
+      .wrap li{
+        float:left;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <ul style="margin-left:0;">
+        <li><img src="images/1.jpg" /></li>
+        <li><img src="images/2.jpg" /></li>
+        <li><img src="images/3.jpg" /></li>
+        <li><img src="images/4.jpg" /></li>
+        <li><img src="images/5.jpg" /></li>
+        <li><img src="images/6.jpg" /></li>
+      </ul>
+      <img src="images/l.png" id="prev" alt="">
+      <img src="images/r.png" id="next" alt="">
+     </div>
+     <script>
+       var next = document.getElementById("next");
+       var prev = document.getElementById("prev");
+       var ul = document.getElementsByClassName("wrap")[0].getElementsByTagName("ul")[0];
+       var liList = ul.getElementsByTagName("li")
+       var wrap = document.getElementsByClassName("wrap")[0];
+       var n = 0;  //当前所在的张数
+       var speed = 40;
+
+       function toNext(){
+         n++;
+         if(n < liList.length){
+           var t = setInterval(function(){
+             //每次移动之前获取当前ul的marginLeft值
+             var ml = parseInt(ul.style.marginLeft);
+             if(ml !== -(n * 1000)){
+               //移动ul
+               ul.style.marginLeft = ml - speed + "px"
+             }
+             else{
+               clearInterval(t)
+             }
+           },15)
+         }
+         else{
+           n = 0;
+           var t = setInterval(function(){
+             //每次移动之前获取当前ul的marginLeft值
+             var ml = parseInt(ul.style.marginLeft);
+             if(ml !== -(n * 1000)){
+               //移动ul
+               ul.style.marginLeft = ml + speed * (liList.length - 1) + "px"
+             }
+             else{
+               clearInterval(t)
+             }
+           },15)
+         }
+       }
+
+
+       next.onclick = function(){
+         toNext()
+       }
+       prev.onclick = function(){
+         n--;
+         if(n !== -1){
+           var t = setInterval(function(){
+             //每次移动之前获取当前ul的marginLeft值
+             var ml = parseInt(ul.style.marginLeft);
+             if(ml !== -(n * 1000)){
+               //移动ul
+               ul.style.marginLeft = ml + speed + "px"
+             }
+             else{
+               clearInterval(t)
+             }
+           },15)
+         }
+         else{
+           n = liList.length - 1;
+           var t = setInterval(function(){
+             //每次移动之前获取当前ul的marginLeft值
+             var ml = parseInt(ul.style.marginLeft);
+             if(ml !== -(n * 1000)){
+               //移动ul
+               ul.style.marginLeft = ml- speed * (liList.length - 1) + "px"
+             }
+             else{
+               clearInterval(t)
+             }
+           },15)
+         }
+       }
+
+       //自动播放
+       var autoPlay = setInterval(function(){
+         toNext();
+       },3000)
+
+      //智能判断
+      wrap.onmouseenter = function(){
+        clearInterval(autoPlay);
+      }
+      wrap.onmouseleave = function(){
+        var autoPlay = setInterval(function(){
+          toNext();
+        },3000)
+      }
+     </script>
+  </body>
+</html>
