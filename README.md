@@ -471,6 +471,10 @@
     }
   ```
   * onclick 当用户单击时
+  * onmouseover 当鼠标经过时
+  * onmouseout  当鼠标离开时
+  * onmouseenter 当鼠标经过时
+  * onmouseleave 当鼠标离开时
 
 
 ### this关键字出现的场景和指向问题
