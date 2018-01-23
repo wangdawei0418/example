@@ -486,6 +486,8 @@
     - arg1:Object Node节点 插入的元素
     - arg2:Object Node节点 参照位置
     - 在arg2之前,插入arg1
+  * 删除节点 `removeChild(arg)`
+    - arg:Object Node节点 要删除的节点
 
   * 节点插入 `appendChild(arg)`
     - arg:Node节点
@@ -495,12 +497,34 @@
     - 返回调用该方法的节点对象的副本
   * 节点的查找
     - `parentNode` 返回该节点的父级节点
+    - `nextSibling` `nextElementSibling` 返回下一个兄弟节点
+    - `previousSibling` `previousElementSibling` 返回上一个兄弟节点
+    - `firstChild` `firstElementChild` 返回第一个子节点
+    - `lastChild` `lastElementChild` 返回最后一个字节点
   * 节点类型 `nodeType`  返回值为Number类型
     - 1:元素节点
     - 3:文本节点
     - 8:注释节点
     - 9:文档(document对象)节点
   * 获取元素的所有子节点 `childNodes`
+
+
+### 节点属性的操作
+  * 获取节点属性的属性值 `getAttribute(arg)`
+    - arg: String 属性名
+    - 返回arg的属性值
+  * 设置节点属性的属性值 `setAttribute(arg1,arg2)`
+    - arg1: String 属性名
+    - arg2: String 设置的值
+  * 删除某个属性 `removeAttribute(arg)`
+    - arg: String 属性名
+
+
+### 获取/设置元素的行内样式 `node.style.样式名`
+  * `样式名`如果时连字符的样式那么去掉`-`改为驼峰式写法
+  * 只能获取/设置元素的<strong>行内样式</strong>
+
+
 
 
 

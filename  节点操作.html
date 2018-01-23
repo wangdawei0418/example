@@ -12,6 +12,7 @@
       <p class="p4">我是p4</p>
       <p class="p5">我是p5</p>
     </div>
+    <input type="text" disabled="true" dataIndex="1" id="input1" name="a1" value="">
     <script>
       var newElement = document.createElement("p");
       newElement.innerHTML = "我是通过js设置的内容";
@@ -21,15 +22,26 @@
       // body.appendChild(newElement)
       //插在前面
       var p3 = document.getElementsByClassName("p3")[0]
+      var p4 = document.getElementsByClassName("p4")[0]
       // obj.insertBefore(newElement,p3)
       // obj.insertAfter(newElement,p3)
 
+      //删除节点
+      // obj.removeChild(p4)
+
+      // console.log(p3.previousElementSibling)
+
+      // console.log(obj.childElementNodes)
       // console.log("insertAfter" in obj)
 
       // function insertBf(obj1,obj2){
       //   obj2.parentNode.insertBefore(obj1,obj2)
       // }
       // insertBf(newElement,p3)
+
+      var input = document.getElementById('input1')
+      input.setAttribute("dataIndex","abc123")
+
     </script>
   </body>
 </html>
