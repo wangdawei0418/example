@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>计时器</title>
+    <style media="screen">
+      *{margin:0;padding:0;}
+      #div1{
+        width:300px;
+        height:300px;
+        background-color:#f99;
+        font-size:42px;
+        line-height:300px;
+        color:#fff;
+        text-align:center;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="div1">
+      点我,我就跑
+    </div>
+    <script>
+      // setTimeout(function(){alert(1)},3000)
+      // setInterval(function(){
+      //   console.log(1)
+      // },3000)
+      var obj = document.getElementById("div1")
+      var ml = 0;
+      obj.onclick = function(){
+        setInterval(function(){
+          if(obj.style.marginLeft !== "724px"){
+            obj.style.marginLeft = ml + 2 + 'px'
+            ml += 2;
+          }
+        },15)
+      }
+    </script>
+  </body>
+</html>
