@@ -513,7 +513,7 @@
   * 获取节点属性的属性值 `getAttribute(arg)`
     - arg: String 属性名
     - 返回arg的属性值
-  * 设置节点属性的属性值 `setAttribute(arg1,arg2)`
+  * 设置节点属性的属性值 `setAttribut1e(arg1,arg2)`
     - arg1: String 属性名
     - arg2: String 设置的值
   * 删除某个属性 `removeAttribute(arg)`
@@ -524,6 +524,16 @@
   * `样式名`如果时连字符的样式那么去掉`-`改为驼峰式写法
   * 只能获取/设置元素的<strong>行内样式</strong>
 
+### 计时器
+  `setTimeout(arg1,arg2)`
+    - arg1:匿名函数
+    - arg2:Number
+    - 过arg2毫秒之后,执行一次arg1.
+
+  `setInterval(arg1,arg2)`
+    - arg1:匿名函数
+    - arg2:Number
+    - 每过arg2毫秒之后,执行一次arg1.
 
 
 
