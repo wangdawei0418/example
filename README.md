@@ -482,6 +482,11 @@
     - 生成一个与arg相对应的Node节点
     - 该方法只在document对象下存在
 
+  * 节点插入 `insertBefore(arg1,arg2)`
+    - arg1:Object Node节点 插入的元素
+    - arg2:Object Node节点 参照位置
+    - 在arg2之前,插入arg1
+
   * 节点插入 `appendChild(arg)`
     - arg:Node节点
     - 在调用方法的对象内部结尾之前插入参数对象
