@@ -529,21 +529,14 @@
     - arg1:匿名函数
     - arg2:Number
     - 过arg2毫秒之后,执行一次arg1.
-
   `setInterval(arg1,arg2)`
     - arg1:匿名函数
     - arg2:Number
     - 每过arg2毫秒之后,执行一次arg1.
-
-
-
-
-
-
-
-#### 第六题
-  * 实现一个方法:
-  * 该方法期望接受2个参数
-  * arg1:Node节点
-  * arg2:字符串
-  * 该函数返回arg1的所有class值为arg2的同级元素 返回结果为数组.
+  `clearTimeout(arg)`
+    - arg:Number 计时器编号
+  `clearInterval(arg)`
+    - arg:Number 计时器编号
+#### `parseInt(exp)` 强制转换为Number类型
+  * parseInt("12ab")  -> 12
+  * parseInt("12ab34") -> 12
