@@ -477,20 +477,30 @@
   * 当出现在事件函数内部时,this指向触发该事件的Node节点对象.
 
 ### 节点的操作
-  * 节点插入 appendChild(arg)
+  * 节点的创建 `createElement(arg)`
+    - arg:String
+    - 生成一个与arg相对应的Node节点
+    - 该方法只在document对象下存在
+
+  * 节点插入 `appendChild(arg)`
     - arg:Node节点
     - 在调用方法的对象内部结尾之前插入参数对象
-  * 节点克隆 cloneNode(arg)
+  * 节点克隆 `cloneNode(arg)`
     - arg:Boolean 如果为true则连同内容一并克隆 反之不克隆内容
     - 返回调用该方法的节点对象的副本
   * 节点的查找
-    - parentNode 返回该节点的父级节点
-  * 节点类型 nodeType  返回值为Number类型
+    - `parentNode` 返回该节点的父级节点
+  * 节点类型 `nodeType`  返回值为Number类型
     - 1:元素节点
     - 3:文本节点
     - 8:注释节点
     - 9:文档(document对象)节点
-  * 获取元素的所有子节点 childNodes
+  * 获取元素的所有子节点 `childNodes`
+
+
+
+
+
 
 #### 第六题
   * 实现一个方法:

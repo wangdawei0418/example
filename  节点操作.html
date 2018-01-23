@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+    <script>
+      var newElement = document.createElement("p");
+      newElement.innerHTML = "我是通过js设置的内容";
+      var body = document.getElementsByTagName("body")[0]
+      body.appendChild(newElement)
+    </script>
+  </body>
+</html>
