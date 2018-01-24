@@ -562,4 +562,7 @@
     }
   ```
   * offsetX,offsetY 相对于事件源对象的位置 Number
-  
+
+
+#### 打字机效果轮播图URL
+    `http://d.lanrentuku.com/down/js/jiaodiantu-1164/`
