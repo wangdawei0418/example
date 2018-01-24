@@ -544,3 +544,12 @@
 #### `parseInt(exp)` 强制转换为Number类型
   * parseInt("12ab")  -> 12
   * parseInt("12ab34") -> 12
+
+
+### Math数学对象
+  - PI 返回圆周率
+  - abs() 返回绝对值
+  - ceil() 向上取整,针对浮点数(小数)
+  - floor() 向下取整,舍去所有小数位
+  - round() 四舍五入,主要观察小数第一位
+  - random(10) 返回0-1之间的伪随机数
