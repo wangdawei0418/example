@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>返回16进制随机颜色值</title>
+    <style media="screen">
+      *{margin:0;padding:0;}
+      li{list-style:none;}
+      #top li{
+        float:left;
+        width:20%;
+        height:2px;
+      }
+    </style>
+  </head>
+  <body>
+    <ul id="top">
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+    <script>
+      function getRandomColor(){
+        var arr = [0,1,2,3,4,5,6,7,8,9,"A","B","C","D","E","F"]
+        var result = "#";
+        for(var i = 0; i < 6;i++){
+          var random = Math.floor(Math.random()*16);
+          result += arr[random];
+        }
+        return result;
+      }
+
+      var liList = document.getElementById("top").getElementsByTagName("li");
+      for(var i = 0; i < liList.length;i++){
+        liList[i].style.backgroundColor = getRandomColor()
+      }
+    </script>
+  </body>
+</html>
