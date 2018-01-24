@@ -24,7 +24,7 @@
         a10:0,
       }
       for(var i = 0; i < 100000; i++){
-        var num = Math.round(Math.random() * 10);
+        var num = Math.floor(Math.random() * 11);
         result["a"+num]++;
       }
       console.log(result)
