@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>实时更新的页面坐标</title>
+    <style media="screen">
+      *{margin:0;padding:0;}
+      html,body{height:100%;}
+      #page{
+        height:100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="page">
+
+    </div>
+    <script>
+      var obj = document.getElementById("page");
+      obj.onmousemove = function(event){
+        obj.innerHTML = "X:" + event.offsetX + ",Y:" + event.offsetY;
+      }
+    </script>
+  </body>
+</html>

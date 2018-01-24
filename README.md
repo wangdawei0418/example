@@ -475,6 +475,7 @@
   * onmouseout  当鼠标离开时
   * onmouseenter 当鼠标经过时
   * onmouseleave 当鼠标离开时
+  * onmousemove 当鼠标在元素上移动时
 
 
 ### this关键字出现的场景和指向问题
@@ -553,3 +554,12 @@
   - floor() 向下取整,舍去所有小数位
   - round() 四舍五入,主要观察小数第一位
   - random() 返回0-1之间的伪随机数
+
+### 事件对象
+  ```
+    node.事件名 = function(event){
+      event  -> 事件对象
+    }
+  ```
+  * offsetX,offsetY 相对于事件源对象的位置 Number
+  

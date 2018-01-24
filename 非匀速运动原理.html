@@ -22,7 +22,7 @@
         setInterval(function(){
           var ml = parseInt(obj.style.marginLeft);
           if(ml < far){
-            obj.style.marginLeft = ml + (far-ml)/10 + "px"
+            obj.style.marginLeft = ml + Math.ceil((far-ml)/10) + "px"
           }
         },30)
       }
