@@ -19,6 +19,14 @@
         position:absolute;
         border:1px solid #f00;
       }
+      #game span{
+        width:20px;
+        height:20px;
+        background-color:#f99;
+        border-radius:50%;
+        position:absolute;
+        display:block;
+      }
     </style>
   </head>
   <body>
@@ -28,7 +36,22 @@
       var wrap = document.getElementById("game");
       var initLength = 3; //蛇身的初始长度
       var snake = [];
+      var dir = "right" // 蛇的移动方向,默认向右移动
+      var speed = 150;  // 移动速度,值越小移动越快
       //初始化一条蛇
+      function addBody(){
+        //创建一节身体
+        var snakeBody = document.createElement("div");
+        //设置class
+        snakeBody.className = "snakeBody";
+        //插入到游戏界面
+        wrap.appendChild(snakeBody);
+        //新的身体插入到数组里
+        snake.push(snakeBody);
+        //动态设置坐标位置
+        snakeBody.style.left = LEFT + "px";
+        snakeBody.style.top = TOP + "px";
+      }
       function createSnake(){
         for(var i = 0; i < initLength; i++){
           //创建一节身体
@@ -44,22 +67,86 @@
           snakeBody.style.top = '0px'
         }
       }
-      createSnake();
-
+      //蛇的移动
       function moveSnake(){
         // 新蛇头应该在的位置
-        var LEFT = parseInt(snake[snake.length - 1].style.left) + 20
-        var TOP = parseInt(snake[snake.length - 1].style.top) + 20
+        LEFT = parseInt(snake[snake.length - 1].style.left)
+        TOP = parseInt(snake[snake.length - 1].style.top)
 
+        //修正数组的对应关系
         //把当前的蛇尾插入到蛇头前面一份副本
         snake.push(snake[0])
-        snake[snake.length - 1].style.left = LEFT + "px"
+        //修正样式
         snake.shift();
+
+        if(dir == "right"){
+          snake[snake.length - 1].style.left = LEFT + 20 + "px"
+          snake[snake.length - 1].style.top = TOP + "px"
+        }
+
+        if(dir == "bottom"){
+          snake[snake.length - 1].style.left = LEFT + "px"
+          snake[snake.length - 1].style.top = TOP + 20 + "px"
+        }
+        if(dir == "left"){
+          snake[snake.length - 1].style.left = LEFT - 20 + "px"
+          snake[snake.length - 1].style.top = TOP + "px"
+        }
+        if(dir == "top"){
+          snake[snake.length - 1].style.left = LEFT + "px"
+          snake[snake.length - 1].style.top = TOP - 20 + "px"
+        }
+        //吃到食物的碰撞检测
+        if(TOP == foodPoint.y && LEFT == foodPoint.x){
+            //重新生成食物
+            createFood();
+            //加入一节身体
+            addBody()
+        }
       }
 
+      //随机生成一个食物
+      function createFood(){
+        //如果页面已经存在食物,则删掉食物
+        if(wrap.getElementsByTagName("span").length){
+          wrap.removeChild(wrap.getElementsByTagName("span")[0]);
+        }
+        //生成食物节点
+        var food = document.createElement("span");
+        wrap.appendChild(food);
+        foodPoint = {};
+        // 随机生成食物坐标
+        foodPoint.x = Math.floor(Math.random() * 481 / 20) * 20;
+        foodPoint.y = Math.floor(Math.random() * 481 / 20) * 20;
+        food.style.left = foodPoint.x + "px";
+        food.style.top = foodPoint.y + "px";
+      }
+
+      window.onkeydown = function(event){
+        if(event.keyCode == 40 && dir !== "top"){
+          dir = "bottom"
+        }
+        if(event.keyCode == 39 && dir !== "left"){
+          dir = "right"
+        }
+        if(event.keyCode == 37 && dir !== "right"){
+          dir = "left"
+        }
+        if(event.keyCode == 38 && dir !== "bottom"){
+          dir = "top"
+        }
+      }
+
+
+
+      // 生成一条蛇
+      createSnake();
+      // 生成一个食物
+      createFood();
+      // 开始游戏
       setInterval(function(){
         moveSnake()
-      },300)
+      },speed)
     </script>
   </body>
 </html>
