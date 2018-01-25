@@ -463,20 +463,6 @@
 #### 元素节点的类型
   * Node节点
   * NodeList 类数组  若干个Node节点的一个集合
-### 事件
-  * 当某件事情发生时,触发执行的代码
-  ```
-    node.onclick = function(){
-      代码块
-    }
-  ```
-  * onclick 当用户单击时
-  * onmouseover 当鼠标经过时
-  * onmouseout  当鼠标离开时
-  * onmouseenter 当鼠标经过时
-  * onmouseleave 当鼠标离开时
-  * onmousemove 当鼠标在元素上移动时
-
 
 ### this关键字出现的场景和指向问题
   * 当出现在事件函数内部时,this指向触发该事件的Node节点对象.
@@ -555,14 +541,32 @@
   - round() 四舍五入,主要观察小数第一位
   - random() 返回0-1之间的伪随机数
 
+### 事件
+* 当某件事情发生时,触发执行的代码
+```
+  node.onclick = function(){
+    代码块
+  }
+```
+* onclick 当用户单击时
+* onmouseover 当鼠标经过时
+* onmouseout  当鼠标离开时
+* onmouseenter 当鼠标经过时
+* onmouseleave 当鼠标离开时
+* onmousemove 当鼠标在元素上移动时
+
+`键盘事件常常被绑定在window对象上,但有一些表单元素也会被绑定该事件`
+* onkeydown 当键盘按下时
+* onkeyup  当键盘按键抬起时触发该事件
+
+
 ### 事件对象
   ```
     node.事件名 = function(event){
       event  -> 事件对象
     }
   ```
+#### 鼠标事件对象
   * offsetX,offsetY 相对于事件源对象的位置 Number
-
-
-#### 打字机效果轮播图URL
-    `http://d.lanrentuku.com/down/js/jiaodiantu-1164/`
+#### 键盘事件对象
+  * keyCode 返回当前按键的键码   Number
