@@ -4,49 +4,19 @@
     <meta charset="utf-8">
     <title></title>
     <style media="screen">
-      .errorMsg{
-        font-size: 12px;
-        color:#f00;
-      }
-      .rightMsg{
-        display:inline-block;
-        width:16px;
-        height:16px;
-        background-image:url(ico_warn.png);
-        background-repeat:no-repeat;
-      }
-      .tipMsg{
-        display:inline-block;
-        height:16px;
-        background-image:url(ico_warn.png);
-        background-repeat:no-repeat;
-        background-position:0 -200px;
-      }
     </style>
   </head>
   <body>
     <p>
       <input type="text" id="userName">
-      <span></span>
     </p>
-
     <script>
       var input1 = document.getElementById("userName");
-      input1.onkeyup = function(){
-        if(this.value.length < 6){
-          this.nextElementSibling.innerHTML = "用户名不能小于6位"
-          this.nextElementSibling.className = "errorMsg"
-        }
-        else{
-          this.nextElementSibling.innerHTML = ""
-          this.nextElementSibling.className = "rightMsg"
-        }
+      input1.onkeypress = function(){
+        console.log("press")
       }
-      input1.onfocus = function(){
-        if(!this.value){
-          this.nextElementSibling.innerHTML = "请输入你常用的邮箱地址,该邮箱是找回密码的唯一凭证.";
-          this.nextElementSibling.className = "tipMsg"
-        }
+      input1.onkeydown = function(){
+        console.log("down")
       }
     </script>
   </body>
