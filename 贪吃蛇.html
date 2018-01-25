@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>贪吃蛇网页版</title>
+    <style>
+      *{margin:0;padding:0;}
+      #game{
+        width:500px;
+        height:500px;
+        margin:50px auto;
+        border:1px solid #e3e3e3;
+        position:relative;
+      }
+      .snakeBody{
+        width:18px;
+        height:18px;
+        background-color:#0f0;
+        position:absolute;
+        border:1px solid #f00;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="game">
+    </div>
+    <script>
+      var wrap = document.getElementById("game");
+      var initLength = 3; //蛇身的初始长度
+      var snake = [];
+      //初始化一条蛇
+      function createSnake(){
+        for(var i = 0; i < initLength; i++){
+          //创建一节身体
+          var snakeBody = document.createElement("div");
+          //设置class
+          snakeBody.className = "snakeBody";
+          //插入到游戏界面
+          wrap.appendChild(snakeBody);
+          //新的身体插入到数组里
+          snake.push(snakeBody);
+          //动态设置坐标位置
+          snakeBody.style.left = (20 * i) + "px";
+          snakeBody.style.top = '0px'
+        }
+      }
+      createSnake();
+
+      function moveSnake(){
+        // 新蛇头应该在的位置
+        var LEFT = parseInt(snake[snake.length - 1].style.left) + 20
+        var TOP = parseInt(snake[snake.length - 1].style.top) + 20
+
+        //把当前的蛇尾插入到蛇头前面一份副本
+        snake.push(snake[0])
+        snake[snake.length - 1].style.left = LEFT + "px"
+        snake.shift();
+      }
+
+      setInterval(function(){
+        moveSnake()
+      },300)
+    </script>
+  </body>
+</html>
