@@ -583,3 +583,5 @@
   * getHours() 返回小时
   * getMinutes() 返回分钟
   * getSeconds() 返回秒
+
+  * setMonth(x) 设置Date对象中月份的值
