@@ -570,3 +570,15 @@
   * offsetX,offsetY 相对于事件源对象的位置 Number
 #### 键盘事件对象
   * keyCode 返回当前按键的键码   Number
+
+
+### 日期对象
+  * `new 构造函数`
+  * 日期对象是从用户操作系统中获取的时间(数据不可靠)
+  * getDate() 返回当前日期(哪天)
+  * getDay() 返回0-6之间的数字代表周几 0代表周日
+  * getFullYear() 返回当前年份
+  * getMonth() 返回月份 从0开始 一般都会+1
+  * getHours() 返回小时
+  * getMinutes() 返回分钟
+  * getSeconds() 返回秒
