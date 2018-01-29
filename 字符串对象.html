@@ -8,31 +8,36 @@
         color:red;
       }
       .pass{color:green;}
+      .yellow{background-color:yellow;}
     </style>
   </head>
   <body>
     <p><textarea id="text"></textarea></p>
     <p><button type="button" id="button">开始检测</button></p>
     <p><span id="result"></span></p>
-
+    <p id="edit"></p>
     <script>
       var obj = document.getElementById("text");
       var btn = document.getElementById("button")
       var result = document.getElementById("result")
+      var edit = document.getElementById("edit")
+      var words = ["天安门","54","五四","中南海"]
       btn.onclick = function(){
         var text = obj.value;
-        if(text.indexOf("天安门") !== -1){
-          result.innerHTML = "监测到敏感词汇,在文字的第:" + text.indexOf("天安门")+"位";
-          result.className = "red"
-        }
-        else{
-          result.innerHTML = "通过"
-          result.className = "pass"
+        edit.innerHTML = text;
+        for(var i = 0; i < words.length; i++){
+          if(text.indexOf(words[i]) !== -1){
+            result.innerHTML = "检测到敏感词汇"
+            result.className = "red"
+            edit.innerHTML = edit.innerHTML.replace(words[i],"<span class='yellow'>"+ words[i] +"</span>");
+
+          }
+          else{
+            result.innerHTML = "通过"
+            result.className = "pass"
+          }
         }
       }
-      1.在文章中,有可能出现多条敏感词汇
-      2.敏感词汇库可能不只有一条
-
     </script>
   </body>
 </html>

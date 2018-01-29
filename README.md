@@ -596,3 +596,6 @@
     - searchValue 检索的字符
     - formIndex 检索的起始位置
     - 如果未检索到,则返回-1
+  * String.replace(regExp/string,replacement)
+    - 将字符串里第一个参数替换为第二参数
+    - 全局匹配 `str.replace(/匹配字符/g,修改后的字符)`  
