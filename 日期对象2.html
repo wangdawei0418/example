@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+  <script>
+    var nowTime = new Date();
+    var deadline = new Date();
+    deadline.setDate(3)
+    deadline.setMonth(1)
+    deadline.setHours(0)
+    deadline.setMinutes(0)
+    deadline.setSeconds(0)
+    var s = (deadline.getTime() - nowTime.getTime()) / 1000;
+    console.log(deadline.getTimezoneOffset())
+  </script>
+  </body>
+</html>
