@@ -593,6 +593,6 @@
     - index Number类型
     - `String.charAt(index)` 等价与 `String[index]`
   * String.indexOf(searchValue,formIndex) 从字符串中检索字符首次出现的位置
-    - search 检索的字符
+    - searchValue 检索的字符
     - formIndex 检索的起始位置
     - 如果未检索到,则返回-1
