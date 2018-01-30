@@ -19,6 +19,14 @@
         position:absolute;
         border:1px solid #f00;
       }
+      #game span{
+        width:20px;
+        background-color:#f99;
+        height:20px;
+        border-radius:50%;
+        position:absolute;
+        display:block;
+      }
     </style>
   </head>
   <body>
@@ -58,17 +66,62 @@
         // 移动蛇
         var LEFT = parseInt(snake[snake.length - 1].style.left);
         var TOP = parseInt(snake[snake.length - 1].style.top)
-        snake[0].style.left = LEFT + width + "px";
-        snake[0].style.top = TOP + "px";
+        if(dir == "right"){
+          snake[0].style.left = LEFT + width + "px";
+          snake[0].style.top = TOP + "px";
+        }
+        if(dir == "bottom"){
+          snake[0].style.left = LEFT + "px";
+          snake[0].style.top = TOP + width + "px";
+        }
+        if(dir == "left"){
+          snake[0].style.left = LEFT - width + "px";
+          snake[0].style.top = TOP + "px";
+        }
+        if(dir == "top"){
+          snake[0].style.left = LEFT + "px";
+          snake[0].style.top = TOP - width + "px";
+        }
         //更新数组
         snake.push(snake[0])
         snake.shift()
       }
+      // 蛇自动移动功能
       setInterval(function(){
         moveSnake()
       },speed)
 
-      console.log(snake)
+      // 生成食物方法
+      function createFood(){
+        //生成并插入食物节点
+        var food = document.createElement("span");
+        wrap.appendChild(food)
+        // 食物坐标
+        var point = {x:0,y:0};
+        //生成随机坐标值
+        point.x = Math.floor(Math.random()*(500 - width) / width) * width;
+        point.y = Math.floor(Math.random()*(500 - width) / width) * width;
+        //为节点样式赋值随机坐标值
+        food.style.top = point.y + "px"
+        food.style.left = point.x + "px"
+      }
+      //初始化食物
+      createFood()
+      //根据键盘按下的键子改变蛇头朝向
+      window.onkeydown = function(event){
+        if(event.keyCode == 40 && dir !== "top"){
+          dir = "bottom";
+        }
+        if(event.keyCode == 39 && dir !== "left"){
+          dir = "right";
+        }
+        if(event.keyCode == 37 && dir !== "right"){
+          dir = "left";
+        }
+        if(event.keyCode == 38 && dir !== "bottom"){
+          dir = "top";
+        }
+      }
     </script>
   </body>
 </html>
