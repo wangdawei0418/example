@@ -596,6 +596,34 @@
     - searchValue 检索的字符
     - formIndex 检索的起始位置
     - 如果未检索到,则返回-1
+  * String.lastIndexOf()  同上  从后向前寻找
   * String.replace(regExp/string,replacement)
     - 将字符串里第一个参数替换为第二参数
-    - 全局匹配 `str.replace(/匹配字符/g,修改后的字符)`  
+    - 全局匹配 `str.replace(/匹配字符/g,修改后的字符)`
+  * String.slice(start,end) 截取start下标开始到end下标结束(不包括)中间的字符串
+    - 可接收一个参数的形式,如果传入一个参数则参数代表开始下标,结束到字符串的最尾端(包含)
+  * String.substring() 同上  但不接受负值参数
+  * String.toUpperCase() 转换大写,对非英文字符无效
+  * String.toLowerCase() 转换小写,对非英文字符无效
+
+
+### 数组的全局方法
+  * push() 向数组后面插入元素
+    - 返回值插入后的新长度
+  * pop() 删除数组最后一个元素
+    - 返回值是被删除元素自身
+  * unshift() 向数组元素最前面插入元素  
+    - 返回值插入后的新长度
+  * shift() 删除数组的第一个元素
+    - 返回被删除元素自身
+  * concat(Array) 连接数组
+    - Array 被链接的数组
+  * join(分隔符) 将数组转换为字符串
+    - 可选参数 分隔符代表元素与元素之间的符号，默认值为,
+  * slice() 截取数组  参考String.slice()的规则.
+  * splice() 删除/替换数组元素
+  * reverse() 返回数组元素颠倒后的顺序
+  * sort() 排序
+    - `Array.sort(function(a,b){return a - b})` 从小到大排序
+    - `Array.sort(function(a,b){return b - a})` 从大到小排序
+  * toString() 将数组转换为字符串  可被join()方法代替

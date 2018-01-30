@@ -2,42 +2,13 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>对象</title>
-    <style media="screen">
-      .red{
-        color:red;
-      }
-      .pass{color:green;}
-      .yellow{background-color:yellow;}
-    </style>
+    <title></title>
   </head>
   <body>
-    <p><textarea id="text"></textarea></p>
-    <p><button type="button" id="button">开始检测</button></p>
-    <p><span id="result"></span></p>
-    <p id="edit"></p>
     <script>
-      var obj = document.getElementById("text");
-      var btn = document.getElementById("button")
-      var result = document.getElementById("result")
-      var edit = document.getElementById("edit")
-      var words = ["天安门","54","五四","中南海"]
-      btn.onclick = function(){
-        var text = obj.value;
-        edit.innerHTML = text;
-        for(var i = 0; i < words.length; i++){
-          if(text.indexOf(words[i]) !== -1){
-            result.innerHTML = "检测到敏感词汇"
-            result.className = "red"
-            edit.innerHTML = edit.innerHTML.replace(words[i],"<span class='yellow'>"+ words[i] +"</span>");
-
-          }
-          else{
-            result.innerHTML = "通过"
-            result.className = "pass"
-          }
-        }
-      }
+      var str = "aBCDe打法f";
+      console.log(str.toUpperCase())
+      console.log(str.toLowerCase())
     </script>
   </body>
 </html>
