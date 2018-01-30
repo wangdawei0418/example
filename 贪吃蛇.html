@@ -52,6 +52,23 @@
         }
       }
       initSnake()
+
+
+      function moveSnake(){
+        // 移动蛇
+        var LEFT = parseInt(snake[snake.length - 1].style.left);
+        var TOP = parseInt(snake[snake.length - 1].style.top)
+        snake[0].style.left = LEFT + width + "px";
+        snake[0].style.top = TOP + "px";
+        //更新数组
+        snake.push(snake[0])
+        snake.shift()
+      }
+      setInterval(function(){
+        moveSnake()
+      },speed)
+
+      console.log(snake)
     </script>
   </body>
 </html>
