@@ -85,19 +85,39 @@
         //更新数组
         snake.push(snake[0])
         snake.shift()
+
+
+        // 得分碰撞监测
+        var headPoint = {}
+        headPoint.y = parseInt(snake[snake.length - 1].style.top)
+        headPoint.x = parseInt(snake[snake.length - 1].style.left)
+        console.log(headPoint)
+        if(headPoint.x == point.x && headPoint.y == point.y){
+          createFood();
+          addBody({x:headPoint.x,y:headPoint.y});
+        }
+        //边缘死亡碰撞检测
+        if(headPoint.x > 500 || headPoint.x < 0 || headPoint.y > 500 || headPoint.y < 0){
+          dead();
+        }
+        //死亡检测--碰撞自身所
       }
       // 蛇自动移动功能
-      setInterval(function(){
+      var autoMove = setInterval(function(){
         moveSnake()
       },speed)
 
       // 生成食物方法
       function createFood(){
+        if(wrap.getElementsByTagName("span").length){
+          //清除已经存在的食物
+          wrap.removeChild(wrap.getElementsByTagName("span")[0])
+        }
         //生成并插入食物节点
         var food = document.createElement("span");
         wrap.appendChild(food)
         // 食物坐标
-        var point = {x:0,y:0};
+        point = {x:0,y:0};
         //生成随机坐标值
         point.x = Math.floor(Math.random()*(500 - width) / width) * width;
         point.y = Math.floor(Math.random()*(500 - width) / width) * width;
@@ -105,8 +125,16 @@
         food.style.top = point.y + "px"
         food.style.left = point.x + "px"
       }
+
       //初始化食物
       createFood()
+
+      // 死亡逻辑
+      function dead(){
+        clearInterval(autoMove)
+      }
+
+
       //根据键盘按下的键子改变蛇头朝向
       window.onkeydown = function(event){
         if(event.keyCode == 40 && dir !== "top"){
