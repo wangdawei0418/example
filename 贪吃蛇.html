@@ -91,16 +91,24 @@
         var headPoint = {}
         headPoint.y = parseInt(snake[snake.length - 1].style.top)
         headPoint.x = parseInt(snake[snake.length - 1].style.left)
-        console.log(headPoint)
         if(headPoint.x == point.x && headPoint.y == point.y){
           createFood();
           addBody({x:headPoint.x,y:headPoint.y});
         }
         //边缘死亡碰撞检测
         if(headPoint.x > 500 || headPoint.x < 0 || headPoint.y > 500 || headPoint.y < 0){
-          dead();
+          dead(); }
+        //死亡检测--碰撞自身
+        // 枚举所有蛇身当前坐标(不包含前两节)
+        for(var i = 0; i < snake.length - 2; i++){
+          //获取坐标值
+          var x = parseInt(snake[i].style.left);
+          var y = parseInt(snake[i].style.top);
+          //判断蛇头是否与任意一节蛇身坐标值相等
+          if(headPoint.x == x && headPoint.y == y){
+            dead();
+          }
         }
-        //死亡检测--碰撞自身所
       }
       // 蛇自动移动功能
       var autoMove = setInterval(function(){
@@ -132,6 +140,7 @@
       // 死亡逻辑
       function dead(){
         clearInterval(autoMove)
+        console.log("你死了")
       }
 
 
