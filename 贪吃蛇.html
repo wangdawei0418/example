@@ -96,8 +96,21 @@
           addBody({x:headPoint.x,y:headPoint.y});
         }
         //边缘死亡碰撞检测
-        if(headPoint.x > 500 || headPoint.x < 0 || headPoint.y > 500 || headPoint.y < 0){
-          dead(); }
+        if(headPoint.x > 500 - width || headPoint.x < 0 || headPoint.y > 500 - width || headPoint.y < 0){
+          dead();
+          if(dir == "right"){
+            snake[snake.length - 1].style.left =  parseInt(snake[0].style.left) - width + "px"
+          }
+          if(dir == "left"){
+            snake[snake.length - 1].style.left =  parseInt(snake[0].style.left) + width + "px"
+          }
+          if(dir == "top"){
+            snake[snake.length - 1].style.top =  parseInt(snake[0].style.top) + width + "px"
+          }
+          if(dir == "bottom"){
+            snake[snake.length - 1].style.top =  parseInt(snake[0].style.top) - width + "px"
+          }
+        }
         //死亡检测--碰撞自身
         // 枚举所有蛇身当前坐标(不包含前两节)
         for(var i = 0; i < snake.length - 2; i++){
