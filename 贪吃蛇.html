@@ -124,11 +124,10 @@
         //生成并插入食物节点
         var food = document.createElement("span");
         wrap.appendChild(food)
-        // 食物坐标
-        point = {x:0,y:0};
-        //生成随机坐标值
-        point.x = Math.floor(Math.random()*(500 - width) / width) * width;
-        point.y = Math.floor(Math.random()*(500 - width) / width) * width;
+        //获取随机坐标
+        getRandomPoint();
+        for(var i = 0; i < snake.length;i++){
+        }
         //为节点样式赋值随机坐标值
         food.style.top = point.y + "px"
         food.style.left = point.x + "px"
@@ -143,6 +142,22 @@
         console.log("你死了")
       }
 
+      function getRandomPoint(){
+        // 食物坐标
+        point = {x:0,y:0};
+        //生成随机坐标值
+        point.x = Math.floor(Math.random()*(500 - width) / width) * width;
+        point.y = Math.floor(Math.random()*(500 - width) / width) * width;
+        for(var i = 0; i < snake.length;i++){
+          var bodyPoint = {};
+          bodyPoint.x = parseInt(snake[i].style.left);
+          bodyPoint.y = parseInt(snake[i].style.top);
+          //此次生成的食物坐标与蛇身重叠
+          if(bodyPoint.x == point.x && bodyPoint.y == point.y){
+            getRandomPoint();
+          }
+        }
+      }
 
       //根据键盘按下的键子改变蛇头朝向
       window.onkeydown = function(event){
