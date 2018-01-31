@@ -37,8 +37,9 @@
       var initLength = 3; //蛇身的初始长度
       var snake = [];
       var dir = "right" // 蛇的移动方向,默认向右移动
-      var speed = 150;  // 移动速度,值越小移动越快
+      var speed = 50;  // 移动速度,值越小移动越快
       var width = 20;
+      var player = "godModel"
       //生成一节身体
       function addBody(point){
         //创建一节身体
@@ -88,13 +89,18 @@
 
 
         // 得分碰撞监测
-        var headPoint = {}
+        headPoint = {}
         headPoint.y = parseInt(snake[snake.length - 1].style.top)
         headPoint.x = parseInt(snake[snake.length - 1].style.left)
         if(headPoint.x == point.x && headPoint.y == point.y){
           createFood();
           addBody({x:headPoint.x,y:headPoint.y});
         }
+
+        if(player == "godModel"){
+          startGodModel();
+        }
+
         //边缘死亡碰撞检测
         if(headPoint.x > 500 - width || headPoint.x < 0 || headPoint.y > 500 - width || headPoint.y < 0){
           dead();
@@ -171,7 +177,45 @@
           }
         }
       }
-
+      //上帝模式
+      function startGodModel(){
+        if(headPoint.x !== point.x){
+          if(headPoint.x > point.x){
+            if(dir == "right"){
+              dir = "bottom";
+            }
+            else{
+              dir = "left"
+            }
+          }
+          if(headPoint.x < point.x){
+            if(dir == "left"){
+              dir = "bottom"
+            }
+            else{
+              dir = "right"
+            }
+          }
+        }
+        if(headPoint.x == point.x && headPoint.y !== point.y){
+          if(headPoint.y < point.y){
+            if(dir == "top"){
+              dir = "left"
+            }
+            else{
+              dir = "bottom"
+            }
+          }
+          if(headPoint.y > point.y){
+            if(dir == "bottom"){
+              dir = "left"
+            }
+            else{
+              dir = "top"
+            }
+          }
+        }
+      }
       //根据键盘按下的键子改变蛇头朝向
       window.onkeydown = function(event){
         if(event.keyCode == 40 && dir !== "top"){
