@@ -27,19 +27,66 @@
         position:absolute;
         display:block;
       }
+      #gameInfo{
+        width: 180px;
+        position:absolute;
+        margin-left:30px;
+        padding:15px;
+        border:1px solid #e3e3e3;
+        font-size:18px;
+        line-height:28px;
+        font-family:Arial;
+      }
+      #score{
+        color:#f00;
+        font-weight:bold;
+        position:relative;
+        display:inline-block;
+        transform:scale(1);
+        opacity: 1;
+        transition:all .3s;
+      }
+      #score.fade{
+        opacity: 0;
+        transform:scale(1.3)
+      }
     </style>
   </head>
   <body>
+    <div id="gameInfo">
+      <p>now Player:<span id="player"></span></p>
+      <p>score:<span id="score">0</span></p>
+      <p><button id="startGame">开始游戏</button></p>
+      <p>
+        难度:
+          <select id="gameModel">
+            <option value="250">新手</option>
+            <option value="170">普通</option>
+            <option value="80">大师</option>
+            <option value="40">变态</option>
+          </select>
+      </p>
+      <p>Gametime:<span id="gameTime">0</span>秒</p>
+    </div>
     <div id="game">
     </div>
     <script>
       var wrap = document.getElementById("game");
-      var initLength = 3; //蛇身的初始长度
-      var snake = [];
-      var dir = "right" // 蛇的移动方向,默认向右移动
-      var speed = 50;  // 移动速度,值越小移动越快
-      var width = 20;
-      var player = "godModel"
+      var playerNode = document.getElementById("player");
+      var scoreNode = document.getElementById("score");
+      var startNode = document.getElementById("startGame");
+      var gameModelNode = document.getElementById("gameModel")
+      var gameTimeNode = document.getElementById("gameTime")
+      // 游戏配置信息对象
+      var gameSetting = {
+        width:20, // 蛇身初始长度
+        speed:null, // 移动速度,值越小移动越快
+        player:"godModel",  //当前玩家名字
+        initLength:3, //蛇身的初始长度
+        score:0, //游戏分数
+        isGameStart:false,
+        time:0
+      }
       //生成一节身体
       function addBody(point){
         //创建一节身体
@@ -56,11 +103,11 @@
       }
       //初始化一条蛇
       function initSnake(){
-        for(var i = 0; i < initLength;i++){
+        snake = [];
+        for(var i = 0; i < gameSetting.initLength;i++){
           addBody({x:i * 20,y:0})
         }
       }
-      initSnake()
 
 
       function moveSnake(){
@@ -68,20 +115,20 @@
         var LEFT = parseInt(snake[snake.length - 1].style.left);
         var TOP = parseInt(snake[snake.length - 1].style.top)
         if(dir == "right"){
-          snake[0].style.left = LEFT + width + "px";
+          snake[0].style.left = LEFT + gameSetting.width + "px";
           snake[0].style.top = TOP + "px";
         }
         if(dir == "bottom"){
           snake[0].style.left = LEFT + "px";
-          snake[0].style.top = TOP + width + "px";
+          snake[0].style.top = TOP + gameSetting.width + "px";
         }
         if(dir == "left"){
-          snake[0].style.left = LEFT - width + "px";
+          snake[0].style.left = LEFT - gameSetting.width + "px";
           snake[0].style.top = TOP + "px";
         }
         if(dir == "top"){
           snake[0].style.left = LEFT + "px";
-          snake[0].style.top = TOP - width + "px";
+          snake[0].style.top = TOP - gameSetting.width + "px";
         }
         //更新数组
         snake.push(snake[0])
@@ -95,26 +142,27 @@
         if(headPoint.x == point.x && headPoint.y == point.y){
           createFood();
           addBody({x:headPoint.x,y:headPoint.y});
+          updataScore();
         }
 
-        if(player == "godModel"){
+        if(gameSetting.player == "godModel"){
           startGodModel();
         }
 
         //边缘死亡碰撞检测
-        if(headPoint.x > 500 - width || headPoint.x < 0 || headPoint.y > 500 - width || headPoint.y < 0){
+        if(headPoint.x > 500 - gameSetting.width || headPoint.x < 0 || headPoint.y > 500 - gameSetting.width || headPoint.y < 0){
           dead();
           if(dir == "right"){
-            snake[snake.length - 1].style.left =  parseInt(snake[0].style.left) - width + "px"
+            snake[snake.length - 1].style.left =  parseInt(snake[0].style.left) - gameSetting.width + "px"
           }
           if(dir == "left"){
-            snake[snake.length - 1].style.left =  parseInt(snake[0].style.left) + width + "px"
+            snake[snake.length - 1].style.left =  parseInt(snake[0].style.left) + gameSetting.width + "px"
           }
           if(dir == "top"){
-            snake[snake.length - 1].style.top =  parseInt(snake[0].style.top) + width + "px"
+            snake[snake.length - 1].style.top =  parseInt(snake[0].style.top) + gameSetting.width + "px"
           }
           if(dir == "bottom"){
-            snake[snake.length - 1].style.top =  parseInt(snake[0].style.top) - width + "px"
+            snake[snake.length - 1].style.top =  parseInt(snake[0].style.top) - gameSetting.width + "px"
           }
         }
         //死亡检测--碰撞自身
@@ -129,10 +177,6 @@
           }
         }
       }
-      // 蛇自动移动功能
-      var autoMove = setInterval(function(){
-        moveSnake()
-      },speed)
 
       // 生成食物方法
       function createFood(){
@@ -152,12 +196,13 @@
         food.style.left = point.x + "px"
       }
 
-      //初始化食物
-      createFood()
 
       // 死亡逻辑
       function dead(){
+        //停止自动移动行为
         clearInterval(autoMove)
+        //停止记录本场游戏时间
+        clearInterval(gameTime)
         console.log("你死了")
       }
 
@@ -165,8 +210,8 @@
         // 食物坐标
         point = {x:0,y:0};
         //生成随机坐标值
-        point.x = Math.floor(Math.random()*(500 - width) / width) * width;
-        point.y = Math.floor(Math.random()*(500 - width) / width) * width;
+        point.x = Math.floor(Math.random()*(500 - gameSetting.width) / gameSetting.width) * gameSetting.width;
+        point.y = Math.floor(Math.random()*(500 - gameSetting.width) / gameSetting.width) * gameSetting.width;
         for(var i = 0; i < snake.length;i++){
           var bodyPoint = {};
           bodyPoint.x = parseInt(snake[i].style.left);
@@ -182,7 +227,12 @@
         if(headPoint.x !== point.x){
           if(headPoint.x > point.x){
             if(dir == "right"){
-              dir = "bottom";
+              if(headPoint.x == snake[i].x && headPoint.y + 20 == snake[i].style.top){
+                dir = 'top'
+              }
+              else{
+                dir = "bottom";
+              }
             }
             else{
               dir = "left"
@@ -215,6 +265,61 @@
             }
           }
         }
+      }
+
+      function initGame(){
+        // 初始化蛇头默认方向
+        dir = "right" // 蛇的移动方向,默认向右移动
+        // 清除已有移动计时器
+        if(gameSetting.isGameStart){
+          clearInterval(autoMove)
+          gameSetting.isGameStart = false;
+        }
+        // 重置游戏时间
+        gameTimeNode.innerHTML = 0;
+        gameSetting.time = 0;
+
+        //初始化游戏信息
+        playerNode.innerHTML = gameSetting.player
+        gameSetting.speed = gameModelNode.value;
+        //清空页面中存在的蛇和食物
+        wrap.innerHTML = ""
+        //初始化分数
+        gameSetting.score = 0;
+        scoreNode.innerHTML = 0;
+        //初始化一条蛇
+        initSnake()
+        //初始化食物
+        createFood()
+        // 蛇自动移动功能
+        autoMove = setInterval(function(){
+          moveSnake()
+        },gameSetting.speed)
+        gameSetting.isGameStart = true;
+        //记录本次游戏时间
+        updataTime();
+      }
+      startNode.onclick = function(){
+        initGame()
+      }
+      function updataScore(){
+        //添加class以触发向上渐隐效果
+        scoreNode.className = "fade"
+        //计时0.3秒
+        setTimeout(function(){
+          //更新对象记录分数
+          gameSetting.score += 10;
+          //更新视图分数
+          scoreNode.innerHTML = gameSetting.score;
+          //移除class以触发向下渐显效果
+          scoreNode.className = ""
+        },300)
+      }
+      function updataTime(){
+        gameTime = setInterval(function(){
+          gameSetting.time += 1;
+          gameTimeNode.innerHTML = gameSetting.time
+        },1000)
       }
       //根据键盘按下的键子改变蛇头朝向
       window.onkeydown = function(event){
