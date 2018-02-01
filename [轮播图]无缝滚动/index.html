@@ -35,6 +35,24 @@
         float:left;
       }
       .wrap ul{width:1000000px;}
+      #navList{
+        position: absolute;
+        bottom:25px;
+        left:45%;
+      }
+      #navList span{
+        display:block;
+        width:16px;
+        height:16px;
+        border-radius:50%;
+        float:left;
+        margin-right:8px;
+        cursor:pointer;
+        background-color:#FFF;
+      }
+      #navList .focus{
+        background-color:#dd4012;
+      }
     </style>
   </head>
   <body>
@@ -47,6 +65,7 @@
         <li><img src="images/5.jpg" /></li>
         <li><img src="images/6.jpg" /></li>
       </ul>
+      <div id="navList"></div>
       <img src="images/l.png" id="prev" alt="">
       <img src="images/r.png" id="next" alt="">
      </div>
@@ -56,7 +75,9 @@
         var ul = document.getElementsByClassName("wrap")[0].getElementsByTagName("ul")[0];
         var liList = ul.getElementsByTagName("li")
         var wrap = document.getElementsByClassName("wrap")[0];
-        var n = 0; //当前在第几张
+        var navList = document.getElementById("navList");
+        var n = 0;
+        var m = 0;  //当前在第几张
         var count = liList.length;
         var isVirtualHas = false;
         var isAnimationHas = false;
@@ -67,14 +88,37 @@
               //克隆一份第一张的副本
               newli = liList[0].cloneNode(true);
               ul.appendChild(newli);
+              m = 0;
+            }
+            else{
+              m++;
             }
             animation("next")
           }
         }
+
+        //自动播放
+        var autoPlay = setInterval(function(){
+          next.onclick()
+        },3000)
+
+        //智能判断
+        wrap.onmouseenter = function(){
+          clearInterval(autoPlay)
+        }
+        wrap.onmouseleave = function(){
+          autoPlay = setInterval(function(){
+            next.onclick()
+          },3000)
+        }
+
+        //next.onclick()   模拟用户点击类一下向后箭头
+                        // 执行向后箭头的事件处理函数
         prev.onclick = function(){
           if(!isAnimationHas){
             n--;
             if(n !== -1){
+              m--;
               animation("prev");
             }
             else{
@@ -82,12 +126,14 @@
               newli = liList[liList.length-1].cloneNode(true);
               ul.insertBefore(newli,ul.firstChild);
               ul.style.marginLeft = "-1000px";
+              m = count - 1;
               animation("prev");
               isVirtualHas = true;
             }
           }
         }
         function animation(dir){
+          updataDotStatus();
           var t = setInterval(function(){
             isAnimationHas = true;
             var ml = parseInt(ul.style.marginLeft);
@@ -124,6 +170,23 @@
             }
           },16)
         }
+
+        // 初始化小圆点
+        for(var i = 0; i < count;i++){
+          var newli = document.createElement("span");
+          navList.appendChild(newli)
+        }
+        var spanList = navList.getElementsByTagName("span");
+        spanList[0].className = "focus";
+
+        //更新小圆点函数
+        function updataDotStatus(){
+          for(var i = 0; i < count; i++){
+            spanList[i].className = ""
+          }
+          spanList[m].className = "focus";
+        }
+
      </script>
   </body>
 </html>
