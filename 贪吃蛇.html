@@ -63,7 +63,7 @@
             <option value="250">新手</option>
             <option value="170">普通</option>
             <option value="80">大师</option>
-            <option value="40">变态</option>
+            <option value="30">变态</option>
           </select>
       </p>
       <p>Gametime:<span id="gameTime">0</span>秒</p>
@@ -227,11 +227,13 @@
         if(headPoint.x !== point.x){
           if(headPoint.x > point.x){
             if(dir == "right"){
-              if(headPoint.x == snake[i].x && headPoint.y + 20 == snake[i].style.top){
-                dir = 'top'
-              }
-              else{
-                dir = "bottom";
+              for(var i = 0; i < snake.length;i++){
+                if(parseInt(snake[i].style.left) == headPoint.x && parseInt(snake[i].style.top) + width == headPoint.y){
+                  dir = 'bottom'
+                }
+                if(parseInt(snake[i].style.left) == headPoint.x && parseInt(snake[i].style.top) - width == headPoint.y){
+                  dir = 'top'
+                }
               }
             }
             else{
@@ -240,7 +242,14 @@
           }
           if(headPoint.x < point.x){
             if(dir == "left"){
-              dir = "bottom"
+              for(var i = 0; i < snake.length;i++){
+                if(parseInt(snake[i].style.left) == headPoint.x && parseInt(snake[i].style.top) + width == headPoint.y){
+                  dir = 'bottom'
+                }
+                if(parseInt(snake[i].style.left) == headPoint.x && parseInt(snake[i].style.top) - width == headPoint.y){
+                  dir = 'top'
+                }
+              }
             }
             else{
               dir = "right"
@@ -250,7 +259,14 @@
         if(headPoint.x == point.x && headPoint.y !== point.y){
           if(headPoint.y < point.y){
             if(dir == "top"){
-              dir = "left"
+              for(var i = 0; i < snake.length;i++){
+                if(headPoint.y == parseInt(snake[i].style.top) && parseInt(snake[i].style.left) - width == headPoint.x){
+                  dir = 'left'
+                }
+                if(headPoint.y == parseInt(snake[i].style.top) && parseInt(snake[i].style.left) + width == headPoint.x){
+                  dir = 'right'
+                }
+              }
             }
             else{
               dir = "bottom"
@@ -258,13 +274,21 @@
           }
           if(headPoint.y > point.y){
             if(dir == "bottom"){
-              dir = "left"
+              for(var i = 0; i < snake.length;i++){
+                if(headPoint.y == parseInt(snake[i].style.top) && parseInt(snake[i].style.left) - width == headPoint.x){
+                  dir = 'left'
+                }
+                if(headPoint.y == parseInt(snake[i].style.top) && parseInt(snake[i].style.left) + width == headPoint.x){
+                  dir = 'right'
+                }
+              }
             }
             else{
               dir = "top"
             }
           }
         }
+        pathCheck();
       }
 
       function initGame(){
@@ -301,6 +325,34 @@
       }
       startNode.onclick = function(){
         initGame()
+      }
+      function pathCheck(){
+        if((dir == "left" && headPoint.x == 0) || (dir == "right" && headPoint.x == 500 - width)){
+          for(var i = 0; i < snake.length;i++){
+            if(parseInt(snake[i].style.left) == headPoint.x && parseInt(snake[i].style.top) + width == headPoint.y){
+              dir = 'bottom'
+            }
+            if(parseInt(snake[i].style.left) == headPoint.x && parseInt(snake[i].style.top) - width == headPoint.y){
+              dir = 'top'
+            }
+            if(!(parseInt(snake[i].style.left) == headPoint.x && parseInt(snake[i].style.top) - width == headPoint.y) && !(parseInt(snake[i].style.left) == headPoint.x && parseInt(snake[i].style.top) + width == headPoint.y)){
+              dir = 'top'
+            }
+          }
+        }
+        if((dir == "top" && headPoint.y == 0) || (dir == "bottom" && headPoint.y == 500 - width)){
+          for(var i = 0; i < snake.length;i++){
+            if(headPoint.y == parseInt(snake[i].style.top) && parseInt(snake[i].style.left) - width == headPoint.x){
+              dir = 'left'
+            }
+            if(headPoint.y == parseInt(snake[i].style.top) && parseInt(snake[i].style.left) + width == headPoint.x){
+              dir = 'right'
+            }
+            if(!(headPoint.y == parseInt(snake[i].style.top) && parseInt(snake[i].style.left) - width == headPoint.x) && !(headPoint.y == parseInt(snake[i].style.top) && parseInt(snake[i].style.left) + width == headPoint.x)){
+              dir = 'right'
+            }
+          }
+        }
       }
       function updataScore(){
         //添加class以触发向上渐隐效果
