@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+      *{margin:0;padding:0;}
+      li{list-style:none;}
+      .wrap{
+        width:1000px;
+        margin:100px auto;
+        position:relative;
+        overflow:hidden;
+        border-radius:6px;
+        height:409px;
+      }
+      #prev,#next{
+        position:absolute;
+        top:45%;
+        cursor:pointer;
+        transition:all .5s;
+        opacity: .7;
+      }
+      #prev:hover,#next:hover{
+        opacity: 1;
+        transform:scale(1.1);
+      }
+      #prev{
+        left:20px;
+      }
+      #next{
+        right:20px;
+      }
+      .wrap li{
+        float:left;
+      }
+      .wrap ul{width:1000000px;}
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <ul style="margin-left:0;">
+        <li><img src="images/1.jpg" /></li>
+        <li><img src="images/2.jpg" /></li>
+        <li><img src="images/3.jpg" /></li>
+        <li><img src="images/4.jpg" /></li>
+      </ul>
+      <img src="images/l.png" id="prev" alt="">
+      <img src="images/r.png" id="next" alt="">
+     </div>
+     <script>
+        var next = document.getElementById("next");
+        var prev = document.getElementById("prev");
+        var ul = document.getElementsByClassName("wrap")[0].getElementsByTagName("ul")[0];
+        var liList = ul.getElementsByTagName("li")
+        var wrap = document.getElementsByClassName("wrap")[0];
+        var n = 0; //当前在第几张
+        var count = liList.length;
+        var isVirtualHas = false;
+        var isAnimationHas = false;
+        next.onclick = function(){
+          if(!isAnimationHas){
+            n++;
+            if(n == count){
+              //克隆一份第一张的副本
+              newli = liList[0].cloneNode(true);
+              ul.appendChild(newli);
+            }
+            animation("next")
+          }
+        }
+        prev.onclick = function(){
+          if(!isAnimationHas){
+            n--;
+            if(n !== -1){
+              animation("prev");
+            }
+            else{
+              n = 0;
+              newli = liList[liList.length-1].cloneNode(true);
+              ul.insertBefore(newli,ul.firstChild);
+              ul.style.marginLeft = "-1000px";
+              animation("prev");
+              isVirtualHas = true;
+            }
+          }
+        }
+        function animation(dir){
+          var t = setInterval(function(){
+            isAnimationHas = true;
+            var ml = parseInt(ul.style.marginLeft);
+            //当动画执行完毕之后
+            if(ml == n * (-1000)){
+              clearInterval(t)
+              isAnimationHas = false;
+              // 判断该动画是否是向后箭头的障眼法情况
+              if(n == count){
+                //ul瞬间到达真实的第一张去
+                ul.style.marginLeft = 0;
+                //移除临时li
+                ul.removeChild(newli);
+                //将n校准到正确的位置上
+                n = 0;
+              }
+              // 判断该动画是否时向前箭头的障眼法情况
+              if(isVirtualHas){
+                //ul瞬间到达真实的第一张去
+                ul.style.marginLeft = (-(count - 1) * 1000) + "px";
+                //移除临时li
+                ul.removeChild(newli);
+                //将n校准到正确的位置上
+                n = count - 1;
+                isVirtualHas = false;
+              }
+              return;
+            }
+            if(dir == "next"){
+              ul.style.marginLeft = ml + (Math.floor((n*(-1000) - ml) / 12)) + "px"
+            }
+            if(dir == "prev"){
+              ul.style.marginLeft = ml + (Math.ceil((n*(-1000) - ml) / 12)) + "px"
+            }
+          },16)
+        }
+     </script>
+  </body>
+</html>
