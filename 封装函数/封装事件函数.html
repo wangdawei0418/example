@@ -15,22 +15,34 @@
     </ul>
 
     <script>
-
       function bindEvent(nodeList,eventType,fn){
+        if(arguments.length == 3){
+          for(var i = 0; i < arguments.length;i++){
+            if(typeof arguments[i] == "string"){
+              var a = arguments[i]
+            }
+            if(typeof arguments[i] == "object"){
+              var b  = arguments[i]
+            }
+            if(typeof arguments[i] == "function"){
+              var c = arguments[i]
+            }
+          }
+        }
         if(arguments.length == 2){
-          // fn = arguments[1];
+          fn = arguments[1];
           eventType = "onclick"
         }
-        for(var i = 0; i < nodeList.length;i++){
-          nodeList[i][eventType] = fn
+        for(var i = 0; i < b.length;i++){
+          b[i][a] = c
         }
       }
 
 
       var liList = document.getElementById("ul").getElementsByTagName("li");
-      bindEvent(liList,function(){
+      bindEvent("onclick",function(){
         console.log(this.innerHTML);
-      })
+      },liList)
     </script>
 
   </body>

@@ -452,6 +452,12 @@
     - arg:String 类名
     - 返回值:Object (NodeList)
     - 在不高于IE8的浏览器中不会被识别
+  * querySelector(arg)
+    - arg String css选择器
+    - 返回值：Node
+  * querySelectorAll(arg)
+    - arg String css选择器
+    - 返回值：NodeList
 #### Node节点的属性和方法
   * innerHTML 返回Node节点开始标签与结束标签之间的内容 String
   * className 返回Node节点的class属性所对应的属性值  String  
@@ -459,7 +465,7 @@
   * getElementsByTagName()
   * value 返回Node节点的value属性所对应的属性值
   * checked 返回当前单选按钮或复选框选中的状态 Boolean
-
+  * tagName 返回当前节点的标签名 注：是大写的
 #### 元素节点的类型
   * Node节点
   * NodeList 类数组  若干个Node节点的一个集合
@@ -627,3 +633,10 @@
     - `Array.sort(function(a,b){return a - b})` 从小到大排序
     - `Array.sort(function(a,b){return b - a})` 从大到小排序
   * toString() 将数组转换为字符串  可被join()方法代替
+
+### 事件委托
+  `将事件委托给父级节点来做,利用事件对象的target属性`
+
+#### 使用场景
+  * 当元素不是页面加载完毕之后就存在的元素，还要为该元素绑定事件，那么根据JS执行时序的原则来说，该节点错过了被绑定事件的时机。
+  * 当某个节点数量过于庞大时，那么绑定事件的操作比较消耗客户端性能，如果使用事件委托技术，则可以将大量的绑定事件操作缩减成一次。

@@ -3,18 +3,43 @@
   <head>
     <meta charset="utf-8">
     <title></title>
-    <script>
-      // function add(a,b){
-      //   return a + b;
-      // }
-      // console.log(add(10,5))
-      function add(point){
-        return point.x + point.y;
+    <style media="screen">
+
+      .div1{
+        width:300px;
+        height:300px;
+        background-color:#f99;
+        float:left;
       }
-      console.log(add({x:1,y:2}))
-    </script>
+      .wrap{
+        width:600px;
+        overflow: hidden;
+        padding:30px;
+        border:1px solid #333;
+      }
+    </style>
   </head>
   <body>
+    <div class="wrap">
+      <p>neirong</p>
+      <p>neirong</p>
+      <p>neirong</p>
+      <p>neirong</p>
+      <div class="div1">
+      </div>
+    </div>
 
+    <script type="text/javascript" src="machine.js"></script>
+    <script>
+      var obj = $(".div1")[0];
+      var newobj = obj.cloneNode(true);
+      newobj.style.backgroundColor = "#000"
+      $(".wrap")[0].appendChild(newobj)
+      $(".wrap")[0].onclick = function(e){
+        if(e.target.className == "div1"){
+          alert(1);
+        }
+      }
+    </script>
   </body>
 </html>

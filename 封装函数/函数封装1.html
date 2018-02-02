@@ -16,7 +16,7 @@
     <script>
       // 该函数接受一个字符串
       // 返回值：Node 或 NodeList
-      function getobj(selector){
+      function $(selector){
         var str = selector.slice(1)
         if(selector[0] == "#"){
           return document.getElementById(str)
