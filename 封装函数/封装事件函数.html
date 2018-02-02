@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+    <ul id="ul">
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+      <li>5</li>
+    </ul>
+
+    <script>
+
+      function bindEvent(nodeList,eventType,fn){
+        if(arguments.length == 2){
+          // fn = arguments[1];
+          eventType = "onclick"
+        }
+        for(var i = 0; i < nodeList.length;i++){
+          nodeList[i][eventType] = fn
+        }
+      }
+
+
+      var liList = document.getElementById("ul").getElementsByTagName("li");
+      bindEvent(liList,function(){
+        console.log(this.innerHTML);
+      })
+    </script>
+
+  </body>
+</html>
