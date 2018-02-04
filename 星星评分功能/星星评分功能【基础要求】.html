@@ -18,6 +18,7 @@
 			background-position:-1px -1px;
 			cursor:pointer;
 			position:relative;
+			float:left;
 		}
 		.face{
 			position:absolute;
@@ -41,6 +42,10 @@
 			float:left;
 			margin-right:30px;
 		}
+		.commstar{
+			width:70px;
+			display:inline-block;
+		}
 	</style>
 	<script src="machine.js"></script>
 	<script>
@@ -48,16 +53,29 @@
 			var starList = $(".commstar")[0].querySelectorAll(".star");
 			var scoreNode = $("#score");
 			var commstar = $(".commstar")[0]
+			var score = 0;
 			bindEvent(starList,"onmouseover",function(){
 				var n = this.getAttribute("data-score");
 				for(var i = 0; i < starList.length; i++){
-					if(i < n)
+					if(i < n){
 						starList[i].className = "star focus"
-					else
+					}
+					else{
 						starList[i].className = "star"
+					}
+					commstar.getElementsByClassName("face")[i].style.display = "none"
 				}
+				this.firstChild.style.display = "block"
+				this.firstChild.style.backgroundPosition =((n - 1) * 20) - 80 + "px"
 			})
-			
+
+			commstar.onmouseout = function(){
+				for(var i = 0; i <starList.length;i++){
+					commstar.getElementsByClassName("face")[i].style.display = "none"
+				}
+				updateScore();
+			}	
+
 			bindEvent(starList,function(){
 				score = parseInt(this.getAttribute("data-score"));
 				updateScore();
