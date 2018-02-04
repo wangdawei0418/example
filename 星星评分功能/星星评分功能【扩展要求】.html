@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>星星评分</title>
+	<style>
+		*{margin:0;padding:0;}
+		li{list-style:none;}
+		body{
+			font-size:14px;
+			color:#666;
+		}
+		.star{
+			width:14px;
+			height:14px;
+			display:inline-block;
+			background-image: url(commstar.png);
+			background-position:-1px -1px;
+			cursor:pointer;
+			position:relative;
+			float:left;
+		}
+		.face{
+			position:absolute;
+			top:-18px;
+			left:-1px;
+			width:16px;
+			height:16px;
+			display:block;
+			background-image: url(face.png);
+			display:none;
+		}
+		.star:hover,.star.focus{
+			background-position:-1px -17px;
+		}
+		#wrap{
+			width:1000px;
+			margin:100px auto;
+		}
+		#score{color:#e4393c;}
+		.item{
+			float:left;
+			margin-right:30px;
+		}
+		.commstar{
+			width:70px;
+			display:inline-block;
+		}
+	</style>
+	<script src="machine.js"></script>
+	<script>
+	</script>
+</head>
+<body>
+	<div id="wrap">
+		<div class="item">
+			<span class="label">快递包装</span>
+			<span class="commstar">
+				<span class="star" data-score="1"><i class="face"></i></span>
+				<span class="star" data-score="2"><i class="face"></i></span>
+				<span class="star" data-score="3"><i class="face"></i></span>
+				<span class="star" data-score="4"><i class="face"></i></span>
+				<span class="star" data-score="5"><i class="face"></i></span>
+			</span>
+			<span id="score">0分</span>
+		</div>
+		<div class="item">
+			<span class="label">送货速度</span>
+			<span class="commstar">
+				<span class="star" data-score="1"><i class="face"></i></span>
+				<span class="star" data-score="2"><i class="face"></i></span>
+				<span class="star" data-score="3"><i class="face"></i></span>
+				<span class="star" data-score="4"><i class="face"></i></span>
+				<span class="star" data-score="5"><i class="face"></i></span>
+			</span>
+			<span id="score">0分</span>
+		</div>
+		<div class="item">
+			<span class="label">配送员服务态度</span>
+			<span class="commstar">
+				<span class="star" data-score="1"><i class="face"></i></span>
+				<span class="star" data-score="2"><i class="face"></i></span>
+				<span class="star" data-score="3"><i class="face"></i></span>
+				<span class="star" data-score="4"><i class="face"></i></span>
+				<span class="star" data-score="5"><i class="face"></i></span>
+			</span>
+			<span id="score">0分</span>
+		</div>
+	</div>
+</body>
+</html>
