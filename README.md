@@ -645,4 +645,35 @@
   * 核心方法是 $或者是jQuery
 
 #### $方法的传参形式
-  - String  css选择器  比如:`$(".item")`  返回页面中所有与选择器相匹配的jQuery对象
+  - String  css选择器  比如:`$(".item")`  返回页面中所有与选择器相匹配的jQuery对象   
+    `jquery对象:`是类数组,是若干个Node节点的集合,如果使用数组下标的形式提取出来某一个那么提取出来的返回值就是Node节点(源生Js对象)
+
+  - NodeObject   返回该Node或NodeList的jQuery对象形式
+
+#### jQuery对象的方法
+  * addClass(newClass) newClass:String 为jQuery对象追加class类型
+  * removeClass(class) class:String 为jQuery对象删除某个class
+  * eq(index) index:Number 下标  返回jQuery对象集合中第index个元素(jQuery对象)
+  * html(str) `str String类型 可选参数`
+    - 传参: JQuery对象的开始标签与结束标签之间的内容设置成str
+    - 不传参:返回jQuery对象的开始标签与结束标签之间的内容
+  * 去掉on源生js事件名(eventFn)  eventFn:function  对应的事件处理函数
+    - 注意:在事件处理函数内部,this关键字的指向依然为源生js对象
+  * fadeIn(speed,callback)   渐显
+  * fadeOut(speed,callback)  渐隐
+  * fadeToogle(speed,callback) 渐显/渐隐
+    - speed 执行时间  Number || String ("fast" || "normal" || "slow")
+    - callback 可选 回调函数 function
+  * slideDown() 下拉显示
+  * slideUp()   收起隐藏
+  * slideToggle() 
+
+  * show()
+  * hide()
+  * toggle()
+
+
+  * animate(styleObject,time,callback)
+    - styleObject:Object 样式列表
+    - time 执行事件
+    - callback 可选  回调函数

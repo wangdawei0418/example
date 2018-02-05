@@ -4,11 +4,27 @@
 	<meta charset="UTF-8">
 	<title>Document</title>
 	<script src="jquery.min.js"></script>
+	<style>
+		.oldClass{
+			display:none;
+		}
+	</style>
 </head>
 <body>
-	<div id="item">我是个元素</div>	
+	<div id="obj" class="oldClass a1">我是个元素1</div>	
+	<div class="oldClass a1">我是个元素2</div>	
+	<div class="oldClass a1">我是个元素3</div>	
+	<div class="oldClass a1">我是个元素4</div>	
+	<div class="oldClass a1">我是个元素5</div>	
+	<div class="oldClass a1">我是个元素6</div>	
+	<div class="oldClass a1">我是个元素7</div>	
+	<div class="oldClass a1">我是个元素8</div>	
+	<div class="oldClass a1">我是个元素9</div>	
+	<button id="show">显示/隐藏</button>
 	<script>
-		$("#item").addClass("newClass")
+		$("#show").click(function(){
+			$(".oldClass").show();
+		})
 	</script>
 </body>
 </html>
