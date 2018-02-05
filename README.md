@@ -653,10 +653,12 @@
 #### jQuery对象的方法
   * addClass(newClass) newClass:String 为jQuery对象追加class类型
   * removeClass(class) class:String 为jQuery对象删除某个class
+  * toggleClass()
   * eq(index) index:Number 下标  返回jQuery对象集合中第index个元素(jQuery对象)
   * html(str) `str String类型 可选参数`
     - 传参: JQuery对象的开始标签与结束标签之间的内容设置成str
     - 不传参:返回jQuery对象的开始标签与结束标签之间的内容
+  * find(selector) selector String 从jQuery对象里面寻找符合selector的jQuery对象
   * 去掉on源生js事件名(eventFn)  eventFn:function  对应的事件处理函数
     - 注意:在事件处理函数内部,this关键字的指向依然为源生js对象
   * fadeIn(speed,callback)   渐显

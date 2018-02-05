@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{margin:0;padding:0;}
+		li{list-style:none;}
+		a{text-decoration: none;}
+		#gameList{
+			width:300px;
+			border:1px solid #e3e3e3;
+		}
+		#gameList h2{
+			font-size:14px;
+			font-weight:normal;
+			background-color:#f99;
+			color:#FFF;
+			text-indent:15px;
+			line-height:42px;
+			background-image:url(bottom.png);
+			background-repeat: no-repeat;
+			background-position:95%;
+			cursor:pointer;
+		}
+		#gameList h2.show{
+			background-image:url(top.png);
+		}
+		.wrap{
+			width:1000px;
+			margin:50px auto;	
+		}
+		.selected{
+			margin-bottom:10px;
+		}
+		#gameList ul{
+			padding:10px;
+			font-size:14px;
+			color:#333;
+			font-family:"宋体";
+			overflow:hidden;
+			display: none;
+		}
+		#gameList li{
+			float: left;
+			padding:5px 5px;
+			cursor:pointer;
+			border:1px solid #fff;
+			margin-bottom:0;
+			margin-right:3px;
+			margin-bottom:3px;
+		}
+		#gameList li.selected{
+			border:1px solid #f33;
+		}
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		<p class="selected">
+			已选择:
+			<span id="selectedGame"></span>
+		</p>
+		<div id="gameList">
+			<h2>游戏列表</h2>
+			<ul class="gameUl">
+				<li>魔兽世界</li>
+				<li>王者荣耀</li>
+				<li>英雄联盟</li>
+				<li>QQ飞车</li>
+				<li>绝地求生</li>
+				<li>地下城与勇士</li>
+				<li>贪玩蓝月</li>
+				<li>天涯明月刀</li>
+				<li>逆战</li>
+				<li>穿越火线</li>
+				<li>QQ三国</li>
+				<li>QQ炫舞</li>
+				<li>黑色沙漠</li>
+				<li>上古卷轴剑网3</li>
+				<li>九阴真经2</li>
+				<li>失落的方舟</li>
+				<li>MU</li>
+				<li>CS:GO</li>
+				<li>神武3</li>
+				<li>古剑OL</li>
+				<li>龙之谷</li>
+				<li>影武者</li>
+				<li>坦克世界</li>
+				<li>龙门虎将</li>
+				<li>笑傲江湖</li>
+				<li>灵山奇缘</li>
+			</ul>
+		</div>
+	</div>
+	<script src="jquery.min.js"></script>
+	<script>
+		var liList = $(".gameUl li");
+		$("#gameList h2").click(function(){
+			$(this).toggleClass("show");
+			$(".gameUl").slideToggle();
+		})
+		liList.click(function(){
+			var arr = [];
+			$(this).toggleClass("selected")
+			for(var i = 0; i < liList.length;i++){
+				if(liList[i].className == "selected"){
+					arr.push(liList[i].innerHTML)
+				}
+			}
+			if(arr.length){
+				$("#selectedGame").html(arr.toString())
+			}
+			else{
+				$("#selectedGame").html("请选择至少一个游戏")
+			}
+		})
+	</script>
+</body>
+</html>
