@@ -15,39 +15,10 @@
 	</style>
 </head>
 <body>
-	<ul class="div1">
-		<li>1</li>
-		<li>1</li>
-		<li>1</li>
-		<li id="li">1</li>
-		<li>1111111111</li>
-		<li>
-			<a href="#">1</a>
-			<ul>
-				<li>2</li>
-				<li>2</li>
-				<li>2</li>
-				<li>2</li>
-				<li>2</li>
-			</ul>
-		</li>
-		<div class="a1"></div>
-		<p></p>
-	</ul>
-	<li class="tem">1</li>
-	<button id="insert">插入</button>
+	<ul class="div1"></ul>
 	<script src="jquery-3.3.1.min.js"></script>
 	<script>
-		// $("#insert").click(function(){
-		// 	var $newli = $(".tem").clone(true);
-		// 	$newli.removeClass("tem")
-		// 	$(".div1").after($newli);
-		// })
-		// console.log($("#li").closest(".div1"))
-		// console.log($(".div1").children("li"))
-		// console.log($(".div1").find("a"))
-		// console.log($("#li").siblings())
-		console.log($("#li").nextUntil(".a1"))
+		$(".div1").html().addClass("newClass").attr("index","0")
 	</script>
 </body>
 </html>

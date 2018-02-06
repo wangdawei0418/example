@@ -651,6 +651,10 @@
 
   - NodeObject   返回该Node或NodeList的jQuery对象形式
 
+  - String html代码段  生成一个与HTML代码段相吻合的jQuery对象
+  
+#### 链接调用    
+
 #### jQuery对象的方法
   * addClass(newClass) newClass:String 为jQuery对象追加class类型
   * removeClass(class) class:String 为jQuery对象删除某个class

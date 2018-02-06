@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+      *{margin:0;padding:0;}
+      li{list-style:none;}
+      .wrap{
+        width:1000px;
+        margin:100px auto;
+        position:relative;
+        overflow:hidden;
+        border-radius:6px;
+        height:409px;
+      }
+      #prev,#next{
+        position:absolute;
+        top:45%;
+        cursor:pointer;
+        transition:all .5s;
+        opacity: .7;
+      }
+      #prev:hover,#next:hover{
+        opacity: 1;
+        transform:scale(1.1);
+      }
+      #prev{
+        left:20px;
+      }
+      #next{
+        right:20px;
+      }
+      .wrap ul{
+        width:6000px;
+      }
+      .wrap li{
+        float:left;
+      }
+      .dot{
+        position:absolute;
+        bottom:20px;
+        left:45%;
+      }
+      .dot li{
+        width:12px;
+        height:12px;
+        display:block;
+        background-color:#fff;
+        border: 2px solid #e3e3e3;
+        border-radius:50%;
+        margin-right:8px;
+        cursor: pointer;
+      }
+      .dot li.focus{
+        background-color:#f99;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <ul class="liList" style="margin-left:0;">
+        <li><img src="images/1.jpg" /></li>
+        <li><img src="images/2.jpg" /></li>
+        <li><img src="images/3.jpg" /></li>
+        <li><img src="images/4.jpg" /></li>
+        <li><img src="images/5.jpg" /></li>
+        <li><img src="images/6.jpg" /></li>
+      </ul>
+      <img src="images/l.png" id="prev" alt="">
+      <img src="images/r.png" id="next" alt="">
+      <ul class="dot">
+      </ul>
+     </div>
+    <script src="jquery.min.js"></script>
+    <script>
+
+      var n = 0; //当前所在的张数
+      var $next = $("#next");
+      var $prev = $("#prev");
+      var $wrap = $(".wrap");
+      var $ul = $(".liList");
+      var $dotWrap = $(".dot")
+      var count = $(".wrap li").length;
+      var isAnimation = false;
+
+      // 初始化小圆点
+      for(var i = 0; i < count; i++){
+        var $newdot = $("<li></li>");
+        $newdot.attr("index",i)
+        $newdot.appendTo($dotWrap)
+      }
+      $dotList = $dotWrap.find("li");
+      $dotList.eq(0).addClass("focus")
+      $dotList.click(function(){
+        if(!isAnimation){
+          isAnimation = true;
+          n = $(this).attr("index")
+          $ul.animate({
+            marginLeft: -(n * 1000)
+          },function(){
+            isAnimation = false;
+          })
+          updataDotStatus()
+        }
+      })
+      function updataDotStatus(){
+       $dotList.removeClass("focus")
+       $dotList.eq(n).addClass('focus');
+      }
+      $next.click(function(){
+        if(!isAnimation){
+          isAnimation = true;
+          if(n < count - 1){
+            n++;
+          }
+          else{
+            n = 0;
+          }
+          $ul.animate({
+            marginLeft: -(n * 1000)
+          },function(){
+            isAnimation = false; 
+          })
+          updataDotStatus()
+        }
+      })
+      $prev.click(function(){
+        if(!isAnimation){
+          isAnimation = true;
+          if(n == 0){
+            n = count - 1;
+          }
+          else{
+            n--;
+          }
+          $ul.animate({
+            marginLeft: -(n * 1000)
+          },function(){
+            isAnimation = false;
+          })
+          updataDotStatus();
+        }
+      })
+      var t = setInterval(function(){
+        $next.click()
+      },3000)
+      $wrap.mouseenter(function(){
+        clearInterval(t)
+      })
+      $wrap.mouseleave(function(){
+        t = setInterval(function(){
+          $next.click()
+        },3000)
+      })
+    </script>
+  </body>
+</html>
