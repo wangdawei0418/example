@@ -659,7 +659,6 @@
   * html(str) `str String类型 可选参数`
     - 传参: JQuery对象的开始标签与结束标签之间的内容设置成str
     - 不传参:返回jQuery对象的开始标签与结束标签之间的内容
-  * find(selector) selector String 从jQuery对象里面寻找符合selector的jQuery对象
   * 去掉on源生js事件名(eventFn)  eventFn:function  对应的事件处理函数
     - 注意:在事件处理函数内部,this关键字的指向依然为源生js对象
   * fadeIn(speed,callback)   渐显
@@ -685,11 +684,32 @@
 
   * hasClass(className) className:String 检测jQuery对象是否含有该类名
     - 返回值:true || false
-  
   * val()  对应源生js对象里的value属性
   * attr(name,value) 设置/返回对象的属性值
   * prop()
-  * insertAfter()
   * remove()
   * clone(includeEvent) 拷贝节点
     - includeEvent:是否连同事件一起拷贝  Boolean
+
+#### 插入元素
+  * insertAfter()
+  * inserBefore()
+  * append()
+  * appendTo()
+  * before()
+  * after()
+
+#### 向上遍历
+  * parent()
+  * parents()
+  * `closest(selector)`逐层向上寻找,直到找到第一个与selector相匹配的元素结束寻找,并将其返回
+#### 向下遍历  
+  * children()
+  * `find(selector)` selector String 从jQuery对象里面寻找符合selector的jQuery对象
+  * `eq()`
+#### 同级遍历
+  * siblings()
+  * next()
+  * nextAll()
+  * prev()
+  * prevAll()
