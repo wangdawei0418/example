@@ -566,6 +566,7 @@
 * onkeyup  当键盘按键抬起时触发该事件
 * onkeypress 当键盘按下时(忽略功能键)
 
+* onchange  当域内容发生改变时
 ### 事件对象
   ```
     node.事件名 = function(event){
@@ -674,8 +675,21 @@
   * hide()
   * toggle()
 
+  * css(styleObject)   操作jquery对象的内部样式
+    - styleObject:Object 样式列表
 
   * animate(styleObject,time,callback)
     - styleObject:Object 样式列表
-    - time 执行事件
+    - time 执行事件 Number
     - callback 可选  回调函数
+
+  * hasClass(className) className:String 检测jQuery对象是否含有该类名
+    - 返回值:true || false
+  
+  * val()  对应源生js对象里的value属性
+  * attr(name,value) 设置/返回对象的属性值
+  * prop()
+  * insertAfter()
+  * remove()
+  * clone(includeEvent) 拷贝节点
+    - includeEvent:是否连同事件一起拷贝  Boolean
