@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style>
+		*{margin:0;padding:0;}
+		li{list-style:none;}
+		a{text-decoration: none;}
+		.adv{
+			width:940px;
+			margin:100px auto;
+			position:relative;
+		}
+		.adv li{
+			display:none;
+		}
+		body{
+			background-image:url(images/bg.png);
+		}
+		.adv-nav{
+			margin-top:25px;
+			margin-left:450px;
+		}
+		.adv img{
+			width:100%;
+		}
+		.adv-nav span{
+			display:block;
+			float:left;
+			margin-right:5px;
+			background-color:#fff;
+			opacity: .3;
+			border-radius:3px;
+			width:15px;
+			height:9px;
+			cursor:pointer;
+		}
+		.adv-nav span.focus{
+			opacity: .7;
+		}
+		.prev,.next{
+			width:46px;
+			height:108px;
+			position:absolute;
+			top:45%;
+			right:-46px;
+			cursor:pointer;
+			background-image:linear-gradient( to right, rgba( 0, 0, 0, 0.3) 5%,rgba( 0, 0, 0, 0) 95%);
+		}
+		.prev:hover,.next:hover{
+			background-image:linear-gradient( to right, rgba( 255, 255, 255, 0.3) 5%,rgba( 0, 0, 0, 0) 95%);	
+		}
+		.prev{left:-46px;}
+		.next{right:-46px;}
+		.prev>div,.next>div{
+			margin:36px auto;
+			width:23px;
+			height:36px;
+			background-image:url(images/arrows.png);
+			background-repeat: no-repeat;
+		}
+		.prev>div{
+			background-position:-23px 50%;
+		}
+	</style>
+	<script src="jquery.min.js"></script>
+</head>
+<body>
+	<div class="adv">
+		<ul>
+			<li class="focus" style="display:block;"><img src="images/1.jpg" alt=""></li>
+			<li><img src="images/2.jpg" alt=""></li>
+			<li><img src="images/3.jpg" alt=""></li>
+			<li><img src="images/4.jpg" alt=""></li>
+			<li><img src="images/5.jpg" alt=""></li>
+			<li><img src="images/6.jpg" alt=""></li>
+		</ul>
+		<div class="adv-nav">
+			<span class="focus"></span>
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+		</div>
+		<div class="prev"><div></div></div>
+		<div class="next"><div></div></div>
+	</div>
+
+	<div class="adv">
+		<ul>
+			<li class="focus" style="display:block;"><img src="images/1.jpg" alt=""></li>
+			<li><img src="images/2.jpg" alt=""></li>
+			<li><img src="images/3.jpg" alt=""></li>
+			<li><img src="images/4.jpg" alt=""></li>
+		</ul>
+		<div class="adv-nav">
+			<span class="focus"></span>
+			<span></span>
+			<span></span>
+			<span></span>
+		</div>
+		<div class="prev"><div></div></div>
+		<div class="next"><div></div></div>
+	</div>
+	<script>
+		// 初始化索引值
+		for(var i = 0; i <$(".adv").length;i++){
+			var $liList = $(".adv").eq(i).find("li");
+			var $spanList = $(".adv").eq(i).find(".adv-nav").find("span");
+			for(var j = 0; j < $liList.length; j++){
+				$liList.eq(j).attr("index",j)
+			}
+			for(var j = 0; j < $spanList.length; j++){
+				$spanList.eq(j).attr("index",j)
+			}
+		}
+
+		function changeImg(index,obj){
+			var $navList = $(obj).closest(".adv").find('.adv-nav').find("span");
+			// 隐藏所有的图片
+			$liList.hide();
+			$liList.removeClass("focus");
+			$navList.removeClass("focus");
+			$liList.eq(index).addClass("focus")
+			$liList.eq(index).fadeIn();
+			$navList.eq(index).addClass("focus")
+		}
+
+		$(".next").click(function(){
+			$liList = $(this).closest(".adv").find("li");
+			for(var i = 0; i < $liList.length; i++){
+				if($liList.eq(i).hasClass("focus")){
+					if(i < $liList.length - 1){
+						changeImg(i+1,this)
+					}
+					else{
+						changeImg(0,this)
+					}
+					break;
+				}
+			}
+		})
+
+		$(".prev").click(function(){
+			$liList = $(this).closest(".adv").find("li");
+			for(var i = 0; i < $liList.length; i++){
+				if($liList.eq(i).hasClass("focus")){
+					if(i !== 0){
+						changeImg(i-1,this)
+					}
+					else{
+						changeImg($liList.length - 1,this)
+					}
+					break;
+				}
+			}
+		})
+
+		$(".adv-nav span").click(function(){
+			$liList = $(this).closest(".adv").find("li");
+			var n = this.getAttribute("index");
+			for(var i = 0; i < $liList.length; i++){
+				if($liList.eq(i).hasClass("focus")){
+					changeImg(n,this)
+					break;
+				}
+			}
+		})
+
+		function auto(){
+			$liList = $(".adv").eq(0).find("li");
+			for(var i = 0; i < $liList.length; i++){
+				if($liList.eq(i).hasClass("focus")){
+					if(i < $liList.length - 1){
+						changeImg(i+1,$(".adv").eq(0).find(".next"))
+					}
+					else{
+						changeImg(0,$(".adv").eq(0).find(".next"))
+					}
+					break;
+				}
+			}
+		}
+
+		var autoPlay = setInterval(function(){
+			auto()
+		},5000)
+		$(".adv").eq(0).mouseenter(function(){
+			clearInterval(autoPlay)
+		})
+
+		$(".adv").eq(0).mouseleave(function(){
+			autoPlay = setInterval(function(){
+				auto();
+			},5000)
+		})
+	</script>
+</body>
+</html>
