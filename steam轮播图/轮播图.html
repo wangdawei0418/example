@@ -10,8 +10,7 @@
 		.adv{
 			width:840px;
 			margin:100px 0;
-			float:right;
-			margin-right:100px;
+			margin-left:400px;
 			position:relative;
 		}
 		.adv li{
@@ -37,6 +36,9 @@
 			width:15px;
 			height:9px;
 			cursor:pointer;
+		}
+		html,body{
+			padding-bottom:50px;
 		}
 		.adv-nav span.focus{
 			opacity: .7;
@@ -80,6 +82,70 @@
 			width:100%;
 			display: none;
 		}
+		.clear{
+			clear:both;
+		}
+		.gameList .left{
+			float:left;
+		}
+		.gameList a{
+			color:#c7d5e0;
+		}
+		.gameList .content{
+			float:left;
+			margin-left:25px;
+		}
+		.gameWrap{
+			width:940px;
+		}
+		.gameList{
+			float:left;
+			width:618px;
+		}
+		.gameDetils{
+			float:right;
+			width:278px;
+			height:705px;
+			padding:15px;
+			background-color:#95bbd4;
+		}
+		.gameDetils img{width:100%;}
+		.gameList li{
+			background:rgba( 0, 0, 0, 0.5);
+			height: 69px;
+    		margin-bottom: 5px;
+		}
+		.gameList li.focus{
+			background-color:#95bbd4;
+			margin-right:-14px;
+		}
+		.gameList li.focus a{
+			color:#333;
+		}
+		.gameList .content{
+			width:400px;
+		}
+		.gameList .price{
+			float:right;
+			font-size:12px;
+		}
+		.gameList h2{
+			font-size: 16px;
+			font-weight:normal;
+			margin-top:5px;
+		}
+		.gameDetils h2{
+			color: #263645;
+			font-weight:normal;
+			font-size:21px;
+			font-family: "Motiva Sans", Sans-serif;
+			margin-bottom:5px;
+			width:100%;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+			overflow:hidden;
+		}
+		.gameWrap{margin-left:200px;}
 	</style>
 	<script src="jquery.min.js"></script>
 </head>
@@ -117,6 +183,7 @@
 		</div>
 		<div class="prev"><div></div></div>
 		<div class="next"><div></div></div>
+		<div class="clear"></div>
 	</div>
 
 	<div class="adv">
@@ -130,7 +197,69 @@
 		</div>
 		<div class="prev"><div></div></div>
 		<div class="next"><div></div></div>
+		<div class="clear"></div>
 	</div>
+	
+	<div class="gameWrap">
+		<ul class="gameList">
+			<li class="focus">
+				<a href="#">
+					<img class='left' src="images/capsule_184x69.jpg" alt="">
+					<div class="content">
+						<h2>Hunt Down The Freeman</h2>
+						<span class="price">¥68</span>
+					</div>
+				</a>
+			</li>
+			<li>
+				<a href="#">
+					<img class='left' src="images/capsule_184x69 (1).jpg" alt="">
+					<div class="content">
+						<h2>Sword Art Online: Fatal Bullet - Season Pass</h2>
+						<span class="price">¥188</span>
+					</div>
+				</a>
+			</li>
+			<li>
+				<a href="#">
+					<img class='left' src="images/capsule_184x69 (2).jpg" alt="">
+					<div class="content">
+						<h2>Hunt Down The Freeman</h2>
+						<span class="price">¥278</span>
+					</div>
+				</a>
+			</li>
+			<li>
+				<a href="#">
+					<img class='left' src="images/capsule_184x69 (3).jpg" alt="">
+					<div class="content">
+						<h2>Fallen ~Makina and the City of Ruins~</h2>
+						<span class="price">¥33</span>
+					</div>
+				</a>
+			</li>
+		</ul>
+		<div class="gameDetils">
+			<ul class="content">
+				<li class="focus">
+					<h2>Hunt Down The FreemanSADSADSADSADSAD</h2>
+					<img src="images/ss_86f0ebb505ce0d1e3fb28c3ce450c9a94ef06437.600x338.jpg" alt="">
+					<img src="images/ss_2564a295f658eebe98dd03bcd1ff96bf0a0eb677.600x338.jpg" alt="">
+					<img src="images/ss_72260b7ffa92d8aa0cc9f11feeb63b55375b044e.600x338.jpg" alt="">
+					<img src="images/ss_ece6bddb3c0c97453f19f4a73c1fa5c08d6d7b9b.600x338.jpg" alt="">
+				</li>
+
+				<li>
+					<h2>Sword Art Online: Fatal Bullet - Season Pass</h2>
+					<img src="images/ss_86f0ebb505ce0d1e3fb28c3ce450c9a94ef06437.600x338.jpg" alt="">
+					<img src="images/ss_2564a295f658eebe98dd03bcd1ff96bf0a0eb677.600x338.jpg" alt="">
+					<img src="images/ss_72260b7ffa92d8aa0cc9f11feeb63b55375b044e.600x338.jpg" alt="">
+					<img src="images/ss_ece6bddb3c0c97453f19f4a73c1fa5c08d6d7b9b.600x338.jpg" alt="">
+				</li>
+			</ul>
+		</div>
+	</div>
+
 	<script>
 		// 初始化索引值
 		for(var i = 0; i <$(".adv").length;i++){
@@ -254,6 +383,20 @@
 			autoPlay = setInterval(function(){
 				auto();
 			},5000)
+		})
+
+		$(".gameList li").mouseenter(function(){
+			if(!$(this).hasClass("focus")){
+				var n = $(this).index();
+				$(".gameDetils .focus").fadeOut(function(){
+					$(".gameDetils li").eq(n).fadeIn();
+				});
+
+				$(".gameList li").removeClass("focus")
+				$(".gameDetils li").removeClass("focus")
+				$(this).addClass("focus")
+				$(".gameDetils li").eq(n).addClass("focus")
+			}
 		})
 	</script>
 </body>

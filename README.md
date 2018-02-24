@@ -717,3 +717,9 @@
   * nextAll()
   * prev()
   * prevAll()
+
+### `index()` 返回元素在父级元素中所在的索引值位置
+
+### 流程控制语句(跳出循环)
+  break 跳出整个循环(while,for,forin)
+  continue 跳出本次循环(while,for,forin)
