@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>拖拽</title>
+	<style>
+		*{margin:0;padding:0;}
+		#drop{
+			width:300px;
+			height:300px;
+			background-color:#f99;
+			cursor:move;
+		}
+	</style>
+</head>
+<body>
+	<div id="drop" style="margin-left:0;margin-top:0;"></div>
+	<script src="jquery.min.js"></script>
+	<script>
+		var obj = document.getElementById("drop")
+		var body = document.getElementsByTagName("body")[0];
+
+		// 使用jQuery获取浏览器可视尺寸
+		var bodyWidth = $(document).width();
+		var bodyHeight = $(document).height();
+		// 使用源生JS获取浏览器可视尺寸
+		body.offsetWidth
+
+		obj.onmousedown = function(event){
+			X = event.clientX;
+			Y = event.clientY;
+			var newobj = this.cloneNode(true);
+			//初始化影子
+			newobj.style.opacity = 0.3;
+			newobj.style.position = "absolute";
+			newobj.style.top = parseInt(obj.style.marginTop) + "px";
+			newobj.style.left = parseInt(obj.style.marginLeft) + "px";
+			newobj.style.marginLeft = 0;
+			newobj.style.marginTop = 0;
+			body.appendChild(newobj)
+
+			var ml = parseInt(newobj.style.left);
+			var mt = parseInt(newobj.style.top);
+
+			window.onmousemove = function(event){
+				var x = event.clientX;
+				var y = event.clientY;
+				newobj.style.left = x + "px";
+				newobj.style.top = y + "px";
+				var xn = X - ml;
+				var yn = Y - mt;
+				newobj.style.left = x - xn + "px";
+				newobj.style.top = y - yn + "px";
+				if(parseInt(newobj.style.left) < 0){
+					newobj.style.left = 0;
+				}
+				if(parseInt(newobj.style.left) > bodyWidth - newobj.offsetWidth){
+					newobj.style.left = bodyWidth - newobj.offsetWidth + "px";
+				}
+				if(parseInt(newobj.style.top) < 0){
+					newobj.style.top = 0;
+				}
+				if(parseInt(newobj.style.top) > bodyHeight - newobj.offsetHeight){
+					newobj.style.top = bodyHeight - newobj.offsetHeight + "px";
+				}
+			}
+
+			window.onmouseup = function(event){
+				obj.style.marginLeft = newobj.style.left;
+				obj.style.marginTop = newobj.style.top;
+				window.onmousemove = null;
+				window.onmouseup = null;
+				body.removeChild(newobj)
+			}
+		}
+	</script>
+</body>
+</html>
