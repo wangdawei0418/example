@@ -723,3 +723,18 @@
 ### 流程控制语句(跳出循环)
   break 跳出整个循环(while,for,forin)
   continue 跳出本次循环(while,for,forin)
+
+
+### jQuery获取元素宽、高度
+  * `$obj.width()` 对应源生js中的 `node.offsetWidth`
+  * `$obj.height()` 对应源生js中的 `node.offsetHeight`
+
+### jQuery获取页面可视区域宽、高度
+  * `$(document).width()`
+  * `$(document).height()`
+
+### javascript实现拖拽方法
+  * 拖拽万能公式：起始位置(X) - 终止位置(x) - 元素相对距离(marginLeft || left)
+  * 拖拽用到的事件：`obj.onmousedown` , `window.onmousemove` ,`window.onmouseup`
+  * 拖拽中禁止选中行为：`body.onselectstart = function(){return}`
+

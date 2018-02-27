@@ -1,3 +1,4 @@
+var body = document.getElementsByTagName("body")[0];
 // active侧边栏加小图片
 for(var a=0;a<$(".activeText").find("i").length;a++){
 	$(".activeText").find("i")[a].style.backgroundPosition = -16*a+"px"+" 0px"
@@ -263,3 +264,38 @@ $(".sliderRight").click(function(){
 	baibianStatus(adv.m)
 })
 
+
+$(".handle").mousedown(function(event){
+	var X = event.clientX;
+	var ml = parseInt(this.style.left)
+	var _this = this;
+	var scrollableWidth = $(this).parent().width() - $(this).width();
+
+	body.onselectstart = function(){
+		return false;
+	}
+
+	window.onmousemove = function(event){
+		var x = event.clientX;
+		var nowml = parseInt(_this.style.left);
+		if(x - X + ml > scrollableWidth){
+			return
+		}
+		if(x - X + ml < 0){
+			return 
+		}
+		else{
+			_this.style.left = x - X + ml + "px";
+		}
+		var progress = Math.round(nowml/scrollableWidth * 100) / 100;
+		itemWrap.css({
+			marginLeft:-((itemWrap.width() - 600) * progress)
+		})
+	}
+	window.onmouseup = function(){
+		window.onmousemove = null;
+		body.onselectstart = null;
+	}
+
+
+})

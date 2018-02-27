@@ -1443,9 +1443,11 @@ li{
 	width: 524px;
 	height: 18px;
 	background-color: #15202c;
+	position:relative;
 }
-
-
+.handle{
+	position: absolute;top:0;height: 18px;width: 60px;cursor: pointer;border-radius: 3px;background-color:rgba(0,0,0,0.2)
+}
 .rightcol{
 	float: right;
 	width: 324px;
