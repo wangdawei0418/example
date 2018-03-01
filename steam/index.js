@@ -218,59 +218,100 @@ for(var a=0;a<$length;a++){
 	}
 }
 //点击图片逻辑
-//
 var itemWrap = $(".allsomalimgs");
 var baibianList = itemWrap.find("i");
-//当前所在的张数
-var adv = {};
-adv.m = 0;
-//可视区域最左侧图片的下标
-adv.n = 0;
-adv.count = baibianList.length;
-
-function baibianStatus(index){
-	baibianList.removeClass("baiBian");
-	baibianList.eq(index).addClass("baiBian");
+var adv = {
+	//当前所在的张数
+	nowIndex : 0,
+	imgWidth:120,
+	//可视区域最左侧图片的下标
+	leftIndex : 0,
+	//图片数量
+	count : baibianList.length - 1,
+	left:0,
+	//图片的宽度
+	width:itemWrap.width(),
+	//滚动条可以滚动的距离
+	scrollableWidth:$(".handle").parent().width() - $(".handle").width(),
+	//当前滚动条左边距
+	scrollml:parseInt(itemWrap[0].style.left)
 }
-function moveView(newIndex){
-	var r = adv.count - adv.m;
-	var l = adv.n;
-	if(r > 5){
-		itemWrap.animate({
-			"marginLeft":-(adv.m) * 120 
-		});
-	}
-	else{
-		if(l !== adv.count - 5){
+function changeStatus(){
+	baibianList.removeClass("baiBian");
+	baibianList.eq(adv.nowIndex).addClass("baiBian")
+}
+function moveView(dir){
+	// 场外右手边溢出多少张
+	adv.overRight = adv.count - adv.leftIndex - 5;
+	if((dir == "right" && adv.overRight < 5 && adv.nowIndex !== 0) || (dir == "left" && adv.nowIndex == -1)){
+		// 如果溢出的张数小于5张
+		if(dir == "right" && adv.overRight < 5 && adv.nowIndex !== 0){
+			// 此次转场是将倒数第5张放到可视区域的最左边的位置
 			itemWrap.animate({
-				"marginLeft":-(adv.count - r - 1) * 120 
-			});
+				left:-(adv.imgWidth * (adv.count - 4))
+			})
+		}
+		if(dir == "left" && adv.nowIndex == -1){
+			// 此次转场是将倒数第5张放到可视区域的最左边的位置
+			itemWrap.animate({
+				left:-(adv.imgWidth * (adv.count - 4))
+			})
+
+			//矫正当前所在张数下标
+			adv.nowIndex = adv.count;
 		}
 	}
-	adv.n = newIndex || adv.m;
+	else{
+		itemWrap.animate({
+			left:-(adv.imgWidth * adv.nowIndex)
+		})
+	}
+	// 更新可视区域最左侧坐标
+	if(dir == "left" && adv.nowIndex == adv.count){
+		adv.leftIndex = adv.count - 4;
+	}
+	else{
+		adv.leftIndex = adv.nowIndex;
+	}
 }
+
+
 $(".sliderRight").click(function(){
-	++adv.m;
-	if(adv.m == adv.count){
-		adv.m = 0;
-		moveView();
+	adv.nowIndex++;
+	//判断转场条件1  当前所在张数为可视区域的最后一张
+	if(adv.nowIndex == adv.leftIndex + 5){
+		moveView("right")
 	}
-	if(adv.m == adv.n + 5){
-		moveView() 
+	//判断转场条件2  当前所在张数为总张数的最后一张
+	if(adv.nowIndex == adv.count + 1){
+		adv.nowIndex = 0;
+		moveView("right")
 	}
-	if(adv.count - adv.m < 5){
-		moveView(adv.count - 5)	
-	}
-	baibianStatus(adv.m)
+	changeStatus()
 })
+
+
+
+
+$(".sliderLeft").click(function(){
+	adv.nowIndex--;
+	// 当前所在张数为可视区域的第一张
+	if(adv.nowIndex == adv.leftIndex - 1){
+		//当前所在张数是的第一张
+		// if(adv.nowIndex == -1){
+		// 	//矫正下标  将nowIndex更新到最后一张
+		// 	adv.nowIndex = adv.count;
+		// }
+		moveView("left")
+	}
+	changeStatus()
+})
+
 
 
 $(".handle").mousedown(function(event){
 	var X = event.clientX;
-	var ml = parseInt(this.style.left)
 	var _this = this;
-	var scrollableWidth = $(this).parent().width() - $(this).width();
-
 	body.onselectstart = function(){
 		return false;
 	}
@@ -278,24 +319,24 @@ $(".handle").mousedown(function(event){
 	window.onmousemove = function(event){
 		var x = event.clientX;
 		var nowml = parseInt(_this.style.left);
-		if(x - X + ml > scrollableWidth){
+		if(x - X + adv.scrollml > adv.scrollableWidth){
 			return
 		}
-		if(x - X + ml < 0){
+		if(x - X + adv.scrollml < 0){
 			return 
 		}
 		else{
-			_this.style.left = x - X + ml + "px";
+			_this.style.left = x - X + adv.scrollml + "px";
 		}
-		var progress = Math.round(nowml/scrollableWidth * 100) / 100;
+		var progress = Math.round(nowml/adv.scrollableWidth * 100) / 100;
 		itemWrap.css({
 			marginLeft:-((itemWrap.width() - 600) * progress)
 		})
+
+		adv.left = -((itemWrap.width() - 600) * progress);
 	}
 	window.onmouseup = function(){
 		window.onmousemove = null;
 		body.onselectstart = null;
 	}
-
-
 })

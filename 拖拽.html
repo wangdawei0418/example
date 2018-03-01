@@ -42,9 +42,14 @@
 			var ml = parseInt(newobj.style.left);
 			var mt = parseInt(newobj.style.top);
 
+			body.onselectstart = function(){
+				return false;
+			}
+			
 			window.onmousemove = function(event){
 				var x = event.clientX;
 				var y = event.clientY;
+				console.log(y)
 				newobj.style.left = x + "px";
 				newobj.style.top = y + "px";
 				var xn = X - ml;
