@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="text" id="userName">
+	<span id="hint"></span>
+	<script>
+		var input = document.getElementById("userName");
+		var hint = document.getElementById("hint")
+			
+		//声明回调函数 回调函数名字与callback里面的值相一致
+		function callbackfn(data){
+			hint.innerHTML = data;
+		}
+		input.onkeyup = function(){
+			if(this.value){
+				//生成一个script标签
+				var script = document.createElement("script");
+				//设置src属性   
+				//请求地址
+				//请求参数 至少要有一个回调参数，参数名约定callback
+				// script.setAttribute("src","http://192.168.1.102/jsonp.php?callback=callbackfn")
+				script.setAttribute("src","http://192.168.1.102/jsonpName.php?callback=callbackfn&name=" + input.value)
+				//插入到页面里
+				document.getElementsByTagName("head")[0].appendChild(script)
+			}
+			else{
+				hint.innerHTML = ""
+			}
+		}
+	</script>
+</body>
+</html>

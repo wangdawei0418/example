@@ -738,3 +738,19 @@
   * 拖拽用到的事件：`obj.onmousedown` , `window.onmousemove` ,`window.onmouseup`
   * 拖拽中禁止选中行为：`body.onselectstart = function(){return}`
 
+### Ajax
+  * 本质：Javascript内部的一个内置对象
+  * 作用：HTTP脚本化(让JavaScript可以随意的控制HTTP)
+  * 步骤
+      - 实例化Ajax对象 `new XMLHttpRequest()`
+      - 创建请求 `open(method,url,asyn)`
+      `method` 请求方式：POST || GET
+      `url` 请求地址
+      `asyn` 同步false或异步true
+      - 发送请求 send()
+      - 接受请求 `onreadystatechange`事件 配合 `status`与`readyState`共同检测响应状态
+
+### 解决跨域问题的主流方案
+
+#### jsonp
+  - jsonp 不是一种技术，是一种方法.
