@@ -510,7 +510,7 @@
   * 获取节点属性的属性值 `getAttribute(arg)`
     - arg: String 属性名
     - 返回arg的属性值
-  * 设置节点属性的属性值 `setAttribut1e(arg1,arg2)`
+  * 设置节点属性的属性值 `setAttribute(arg1,arg2)`
     - arg1: String 属性名
     - arg2: String 设置的值
   * 删除某个属性 `removeAttribute(arg)`
@@ -739,7 +739,7 @@
   * 拖拽中禁止选中行为：`body.onselectstart = function(){return}`
 
 ### Ajax
-  * 本质：Javascript内部的一个内置对象
+  * 本质：Javascript内部的一个内置对象XMLHttpRequest()
   * 作用：HTTP脚本化(让JavaScript可以随意的控制HTTP)
   * 步骤
       - 实例化Ajax对象 `new XMLHttpRequest()`
@@ -753,4 +753,4 @@
 ### 解决跨域问题的主流方案
 
 #### jsonp
-  - jsonp 不是一种技术，是一种方法.
+  - jsonp 不是一种技术，是一种方法. jsonp不是Ajax
