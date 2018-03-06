@@ -754,3 +754,17 @@
 
 #### jsonp
   - jsonp 不是一种技术，是一种方法. jsonp不是Ajax
+
+
+### jQuery Ajax
+
+#### `$.get(url,data,success)`
+  * url 必须 请求地址
+  * data 可选 Object  请求数据
+  * success 可选 function 成功后的回调函数 
+    - `function(response)` 服务器端的响应结果
+  例：```$.get("http://192.168.1.1",{name:"abc",sex:"male"},function(response){
+          console.log(response)
+      })```
+
+#### $.post()同上，区别就是不能将请求参数写到url后面。
