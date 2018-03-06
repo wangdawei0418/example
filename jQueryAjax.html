@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>第一次使用Ajax操作HTTP协议</title>
+	<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="jquery.min.js"></script>
+</head>
+<body>
+	<input type="text" id="userName">
+	<span id="hint"></span>
+	<script>
+		var hint = document.getElementById("hint")
+		document.getElementById("userName").onkeyup = function(){
+			var queryStr = this.value;
+			// // 1.创建/实例化Ajax对象     XMLhttpRequest
+			// var ajax = new XMLHttpRequest();
+			// // 2.创建请求
+			// ajax.open("GET","http://192.168.1.100/name.php?name=" + queryStr)
+			// // 3.发送请求
+			// ajax.send()
+			// // 4.接受服务器端响应体
+			// ajax.onreadystatechange = function(){
+			// 	if(ajax.readyState == 4 && ajax.status == 200){
+			// 		hint.innerHTML = ajax.responseText;
+			// 	}
+			// }
+			
+			
+			// $.get("http://192.168.1.100/name.php",{name:queryStr},function(response){
+			// 	console.log(response)
+			// })
+			
+			// $.post("http://192.168.1.100/name.php",{name:queryStr},function(response){
+			// 	console.log(response)
+			// })
+			$.ajax({
+				url:"http://192.168.1.100/jsonpName.php",
+				data:{
+					name:queryStr
+				},
+				type:"get",
+				success:function(data){
+					console.log(data);
+				},
+				error:function(){
+					alert("请求失败")
+				},
+				dataType:"jsonp",
+			})
+		}
+	</script>
+</body>
+</html>
