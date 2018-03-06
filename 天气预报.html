@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>天气预报</title>
+	<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="jquery.min.js"></script>
+	<style>
+		.tbody tr:hover{
+			cursor:pointer;
+			background-color:#f3f3f3;
+		}
+		li{list-style:none;}
+		.content{
+			width:1300px;
+			margin:10px auto;
+			text-align: center;
+		}
+		.content li{
+			padding:5px;
+			width:160px;
+			margin:0 5px;
+			border:3px solid #ccefff;
+			text-align:center;
+			float:left;
+			height:290px;
+			background-color:#f2f9ff;
+		}
+		.high{
+			color:#f56a13;
+		}
+	</style>
+</head>
+<body>
+	<h2>未来7天的天气预报</h2>
+	<ul class="content">
+	</ul>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>编号</th>
+				<th>省</th>
+				<th>市</th>
+				<th>区</th>
+			</tr>
+		</thead>
+		<tbody class="tbody">
+			<tr class="tem" style="display:none;">
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+		</tbody>
+	</table>
+
+	<li class="qiwen-tem" style="display:none;">
+		<p class="date"></p>
+		<p class="icon">
+			<img class="fa" src="" alt="">
+			<img class="fb" src="" alt="">
+		</p>
+		<p class="weather"></p>
+		<p class="qiwen">
+			<span class="high"></span>/
+			<span class="low"></span>
+		</p>
+		<p class="wind"></p>
+	</li>
+	<script>
+		var key = "9e8e1e2208528034d9df8d5ee505cf01";
+		var qiwenTem = $(".qiwen-tem");
+		var ul = $(".content");
+		var imgSrc = "images/";
+		$(".tem").click(function(){
+			ul.html("");
+			var id = $(this).attr("data-id");
+			$.ajax({
+				url:"http://v.juhe.cn/weather/index",
+				data:{
+					key:key,
+					cityname:id	
+				},
+				dataType:"jsonp",
+				beforeSend:function(){
+					loadGif = document.createElement("img")
+					loadGif.setAttribute("src",imgSrc + "loading.gif");
+					$(loadGif).appendTo(ul);
+				},
+				success:function(data){
+					loadGif.remove();
+					var today = data.result.today;
+					var sk = data.result.sk;
+					var future = data.result.future;
+
+					for(var i in future){
+						var newQiwen = qiwenTem.clone(true);
+						var date = future[i].date;
+						var zuidiwendu = future[i].temperature.split("~")[0];
+						var zuigaowendu = future[i].temperature.split("~")[1];
+						var weather = future[i].weather;
+						var iconId = future[i].weather_id
+						var week = future[i].week;
+						var wind = future[i].wind;
+
+						newQiwen.find(".date").html(date)
+						newQiwen.find(".weather").html(weather)
+						newQiwen.find(".low").html(zuidiwendu)
+						newQiwen.find(".high").html(zuigaowendu)
+						newQiwen.find(".wind").html(wind)
+						newQiwen.removeClass("qiwen-tem")
+						newQiwen.appendTo(ul)
+
+						newQiwen.find(".fa")[0].setAttribute("src",imgSrc + iconId.fa + ".png")
+						newQiwen.find(".fb")[0].setAttribute("src",imgSrc + iconId.fb + ".png")
+					}
+					ul.find("li").fadeIn("slow");
+				}
+			})
+
+		})
+
+		//加载城市列表
+		$.ajax({
+			url:"http://v.juhe.cn/weather/citys",
+			data:{
+				key:key
+			},
+			success:function(d){
+				var data = d.result;
+				var tbody = $(".tbody");
+				var tem = $(".tem")
+				for(var i in data){
+					var newTr = tem.clone(true);
+					var province = data[i].province;
+					var city = data[i].city;
+					var district = data[i].district;
+					var id = data[i].id;
+					newTr.find("td").eq(0).html(id)
+					newTr.find("td").eq(1).html(province)
+					newTr.find("td").eq(2).html(city)
+					newTr.find("td").eq(3).html(district)
+					newTr.appendTo(tbody);
+					newTr.show();
+					newTr.attr("data-id",id)
+				}
+			},
+			dataType:"jsonp"
+		})
+	</script>
+</body>
+</html>
