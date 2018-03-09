@@ -1,0 +1,585 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>表格</title>
+  <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+      *{margin:0;padding:0;}
+      .hide{
+        display:none;
+      }
+      .edit span:hover{color:#f00;}
+      .edit span{
+        cursor:pointer;
+      }
+      .mask{
+        position:absolute;
+        width:100%;
+        background-color:rgba(0,0,0,0.3);
+        top:0;
+        left:0;
+      }
+      .popup{
+        background-color:#fff;
+        padding:10px;
+        display:none;
+        position:absolute;
+        width:500px;
+        height:200px;
+        z-index: 2;
+        left:35%;
+        top:50%;
+      }
+      .killMargin{
+        overflow:hidden;
+      }
+    </style>
+</head>
+<body>
+  <div class="killMargin">
+    <div class="right">
+      <h3>XI'AN XIANYANG INT'L AIRPORT (陕西 西安 CN) ZLXY / XIY 离港 </h3>
+      <hr>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>标识符</th>
+            <th>机型</th>
+            <th>目的地</th>
+            <th>出发</th>
+            <th>到达</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>AAR348</td>
+                  <td>A321</td>
+                  <td>Incheon Int'l (ICN)</td>
+                  <td>15:10 CST</td>
+                  <td>18:14 KST</td>
+                  <td class="edit">
+                    <span class="insertData">插入</span>
+                      <span class="deleat">删除</span>
+                  </td>
+          </tr>
+          <tr>
+                  <td>FZA6695</td>
+                  <td>B738</td>
+                  <td>Quanzhou Jinjiang (JJN)</td>
+                  <td>15:05 CST</td>
+                  <td>17:45 CST</td>
+                  <td class="edit">
+                      <span class="insertData">插入</span>
+                      <span class="deleat">删除</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>CHH7509</td>
+                  <td>B738</td>
+                  <td>Fuzhou Changle Int'l (FOC)</td>
+                  <td>  15:00 CST</td>
+                  <td>17:28 CST</td>
+                  <td class="edit">
+                      <span class="insertData">插入</span>
+                      <span class="deleat">删除</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>OKA2885</td>
+                  <td>B738</td>
+                  <td>Urumqi Diwopu Int'l (URC)</td>
+                  <td>  14:54 CST</td>
+                  <td>18:29 CST</td>
+                  <td class="edit">
+                      <span class="insertData">插入</span>
+                      <span class="deleat">删除</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>CES2321</td>
+                  <td>A319</td>
+                  <td>Karamay (KRY)</td>
+                  <td>  14:51 CST</td>
+                  <td>18:26 CST</td>
+                  <td class="edit">
+                      <span class="insertData">插入</span>
+                      <span class="deleat">删除</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>CES2259</td>
+                  <td>A320</td>
+                  <td>Lüliang (LLV)</td>
+                  <td>  14:44 CST</td>
+                  <td>15:31 CST</td>
+                  <td class="edit">
+                      <span class="insertData">插入</span>
+                      <span class="deleat">删除</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>CES2321</td>
+                  <td>A319</td>
+                  <td>Karamay (KRY)</td>
+                  <td>  14:51 CST</td>
+                  <td>18:26 CST</td>
+                  <td class="edit">
+                      <span class="insertData">插入</span>
+                      <span class="deleat">删除</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>CES2259</td>
+                  <td>A320</td>
+                  <td>Lüliang (LLV)</td>
+                  <td>  14:44 CST</td>
+                  <td>15:31 CST</td>
+                  <td class="edit">
+                      <span class="insertData">插入</span>
+                      <span class="deleat">删除</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>CES2321</td>
+                  <td>A319</td>
+                  <td>Karamay (KRY)</td>
+                  <td>  14:51 CST</td>
+                  <td>18:26 CST</td>
+                  <td class="edit">
+                      <span class="insertData">插入</span>
+                      <span class="deleat">删除</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>CES2259</td>
+                  <td>A320</td>
+                  <td>Lüliang (LLV)</td>
+                  <td>  14:44 CST</td>
+                  <td>15:31 CST</td>
+                  <td class="edit">
+                      <span class="insertData">插入</span>
+                      <span class="deleat">删除</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>CES2321</td>
+                  <td>A319</td>
+                  <td>Karamay (KRY)</td>
+                  <td>  14:51 CST</td>
+                  <td>18:26 CST</td>
+                  <td class="edit">
+                      <span class="insertData">插入</span>
+                      <span class="deleat">删除</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>CES2259</td>
+                  <td>A320</td>
+                  <td>Lüliang (LLV)</td>
+                  <td>  14:44 CST</td>
+                  <td>15:31 CST</td>
+                  <td class="edit">
+                      <span class="insertData">插入</span>
+                      <span class="deleat">删除</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>CES2321</td>
+                  <td>A319</td>
+                  <td>Karamay (KRY)</td>
+                  <td>  14:51 CST</td>
+                  <td>18:26 CST</td>
+                  <td class="edit">
+                      <span class="insertData">插入</span>
+                      <span class="deleat">删除</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>CES2259</td>
+                  <td>A320</td>
+                  <td>Lüliang (LLV)</td>
+                  <td>  14:44 CST</td>
+                  <td>15:31 CST</td>
+                  <td class="edit">
+                      <span class="insertData">插入</span>
+                      <span class="deleat">删除</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>CES2321</td>
+                  <td>A319</td>
+                  <td>Karamay (KRY)</td>
+                  <td>  14:51 CST</td>
+                  <td>18:26 CST</td>
+                  <td class="edit">
+                      <span class="insertData">插入</span>
+                      <span class="deleat">删除</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>CES2259</td>
+                  <td>A320</td>
+                  <td>Lüliang (LLV)</td>
+                  <td>  14:44 CST</td>
+                  <td>15:31 CST</td>
+                  <td class="edit">
+                      <span class="insertData">插入</span>
+                      <span class="deleat">删除</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>CES2321</td>
+                  <td>A319</td>
+                  <td>Karamay (KRY)</td>
+                  <td>  14:51 CST</td>
+                  <td>18:26 CST</td>
+                  <td class="edit">
+                      <span class="insertData">插入</span>
+                      <span class="deleat">删除</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>CES2321</td>
+                  <td>A319</td>
+                  <td>Karamay (KRY)</td>
+                  <td>  14:51 CST</td>
+                  <td>18:26 CST</td>
+                  <td class="edit">
+                      <span class="insertData">插入</span>
+                      <span class="deleat">删除</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>CES2259</td>
+                  <td>A320</td>
+                  <td>Lüliang (LLV)</td>
+                  <td>  14:44 CST</td>
+                  <td>15:31 CST</td>
+                  <td class="edit">
+                      <span class="insertData">插入</span>
+                      <span class="deleat">删除</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>CES2321</td>
+                  <td>A319</td>
+                  <td>Karamay (KRY)</td>
+                  <td>  14:51 CST</td>
+                  <td>18:26 CST</td>
+                  <td class="edit">
+                      <span class="insertData">插入</span>
+                      <span class="deleat">删除</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>CES2321</td>
+                  <td>A319</td>
+                  <td>Karamay (KRY)</td>
+                  <td>  14:51 CST</td>
+                  <td>18:26 CST</td>
+                  <td class="edit">
+                      <span class="insertData">插入</span>
+                      <span class="deleat">删除</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>CES2259</td>
+                  <td>A320</td>
+                  <td>Lüliang (LLV)</td>
+                  <td>  14:44 CST</td>
+                  <td>15:31 CST</td>
+                  <td class="edit">
+                      <span class="insertData">插入</span>
+                      <span class="deleat">删除</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>CES2321</td>
+                  <td>A319</td>
+                  <td>Karamay (KRY)</td>
+                  <td>  14:51 CST</td>
+                  <td>18:26 CST</td>
+                  <td class="edit">
+                      <span class="insertData">插入</span>
+                      <span class="deleat">删除</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>CES2321</td>
+                  <td>A319</td>
+                  <td>Karamay (KRY)</td>
+                  <td>  14:51 CST</td>
+                  <td>18:26 CST</td>
+                  <td class="edit">
+                      <span class="insertData">插入</span>
+                      <span class="deleat">删除</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>CES2259</td>
+                  <td>A320</td>
+                  <td>Lüliang (LLV)</td>
+                  <td>  14:44 CST</td>
+                  <td>15:31 CST</td>
+                  <td class="edit">
+                      <span class="insertData">插入</span>
+                      <span class="deleat">删除</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>CES2321</td>
+                  <td>A319</td>
+                  <td>Karamay (KRY)</td>
+                  <td>  14:51 CST</td>
+                  <td>18:26 CST</td>
+                  <td class="edit">
+                      <span class="insertData">插入</span>
+                      <span class="deleat">删除</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>CES2321</td>
+                  <td>A319</td>
+                  <td>Karamay (KRY)</td>
+                  <td>  14:51 CST</td>
+                  <td>18:26 CST</td>
+                  <td class="edit">
+                      <span class="insertData">插入</span>
+                      <span class="deleat">删除</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>CES2259</td>
+                  <td>A320</td>
+                  <td>Lüliang (LLV)</td>
+                  <td>  14:44 CST</td>
+                  <td>15:31 CST</td>
+                  <td class="edit">
+                      <span class="insertData">插入</span>
+                      <span class="deleat">删除</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>CES2321</td>
+                  <td>A319</td>
+                  <td>Karamay (KRY)</td>
+                  <td>  14:51 CST</td>
+                  <td>18:26 CST</td>
+                  <td class="edit">
+                      <span class="insertData">插入</span>
+                      <span class="deleat">删除</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>CES2321</td>
+                  <td>A319</td>
+                  <td>Karamay (KRY)</td>
+                  <td>  14:51 CST</td>
+                  <td>18:26 CST</td>
+                  <td class="edit">
+                      <span class="insertData">插入</span>
+                      <span class="deleat">删除</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>CES2259</td>
+                  <td>A320</td>
+                  <td>Lüliang (LLV)</td>
+                  <td>  14:44 CST</td>
+                  <td>15:31 CST</td>
+                  <td class="edit">
+                      <span class="insertData">插入</span>
+                      <span class="deleat">删除</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>CES2321</td>
+                  <td>A319</td>
+                  <td>Karamay (KRY)</td>
+                  <td>  14:51 CST</td>
+                  <td>18:26 CST</td>
+                  <td class="edit">
+                      <span class="insertData">插入</span>
+                      <span class="deleat">删除</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>CES2321</td>
+                  <td>A319</td>
+                  <td>Karamay (KRY)</td>
+                  <td>  14:51 CST</td>
+                  <td>18:26 CST</td>
+                  <td class="edit">
+                      <span class="insertData">插入</span>
+                      <span class="deleat">删除</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>CES2259</td>
+                  <td>A320</td>
+                  <td>Lüliang (LLV)</td>
+                  <td>  14:44 CST</td>
+                  <td>15:31 CST</td>
+                  <td class="edit">
+                      <span class="insertData">插入</span>
+                      <span class="deleat">删除</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>CES2321</td>
+                  <td>A319</td>
+                  <td>Karamay (KRY)</td>
+                  <td>  14:51 CST</td>
+                  <td>18:26 CST</td>
+                  <td class="edit">
+                      <span class="insertData">插入</span>
+                      <span class="deleat">删除</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>CES2259</td>
+                  <td>A320</td>
+                  <td>Lüliang (LLV)</td>
+                  <td>  14:44 CST</td>
+                  <td>15:31 CST</td>
+                  <td class="edit">
+                      <span class="insertData">插入</span>
+                      <span class="deleat">删除</span>
+                  </td>
+                </tr>
+                <tr id="tem" class="hide">
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td class="edit">
+                      <span class="insertData">插入</span>
+                      <span class="deleat">删除</span>
+                  </td>
+                </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="popup">
+      <button class="btn btn-primary" id="confirm">确定</button>
+      <button id="cancel" class="btn">取消</button>
+    </div>
+  </div>
+  <script>
+    //1. 随机出现的16进制颜色值:
+      function color(){
+            var arr=[0,1,2,3,4,5,6,7,8,9,"A","B","C","D","E","F"]
+            var result="#"
+            for(var i=0;i<6;i++){
+            var  num=Math.floor(Math.random()*16);
+            result+=arr[num];
+          }
+            return result;
+        }
+        // var liList=document.getElementById('top').getElementsByTagName('li')
+        //  for (var i=0;i<liList.length;i++){
+        //    liList[i].style.backgroundColor=color()
+        //  }
+
+
+// 2.通过选择器获取元素节点的函数：
+    function getobj(selector){
+      var str=selector.slice(1)
+      if(selector[0]=="#"){
+        return document.getElementById(str)
+      }
+      if(selector[0]=="."){
+        return document.getElementsByClassName(str)
+      }
+      if(selector[0]!=="#" && selector[0]!=="."){
+        return document.getElementsByTagName(selector)
+      }
+    }
+      // console.log(getobj("#dian"))
+      // console.log(getobj(".name"))
+      // console.log(getobj("li"))
+// 3.给节点绑定事件的函数：
+    function bindEvent(nodeList,eventType,fn){
+      if(arguments.length==2){
+        fn=arguments[1]
+        eventType="onclick"
+      }
+      for(var i=0;i<nodeList.length;i++){
+        nodeList[i][eventType]=fn
+      }
+    }
+    // bindEvent(nodeList,"onclick",function(){
+    //  alert(1)
+    // })
+//4.封装的insertAfter
+    function insertAfter(newElement,targetElement){  
+        var parent=targetElement.parentNode;  
+        if(parent.lastChild==targetElement){  
+            parent.appendChild(newElement);  
+        }
+        else{  
+            parent.insertBefore(newElement,targetElement.nextSibling);  
+        }  
+    }       
+  </script>
+  <script src="jquery.min.js"></script>
+  <script>
+    var insertData=getobj(".insertData")
+    // console.log(insertData)
+    var tbody = getobj("tbody")[0]
+    var tem = getobj("#tem");
+    tbody.onclick=function(event){   //事件委托给父级
+      _this=event.target     //指定点击事件元素
+      var newTr=tem.cloneNode(true)  //克隆tr
+      newTr.className=""    //让新插入的元素显示，本来是被隐藏的
+      if(_this.className=="insertData"){   //只给插入按钮绑定点击事件
+        insertAfter(newTr,_this.parentNode.parentNode)  //插入的位置
+      }
+      if(_this.className!=="edit" && _this.tagName=="TD"){  //除edit外的其他td
+        var input=document.createElement("input")   //创建input
+        _this.innerHTML=""     //清除内容
+        _this.appendChild(input)   //插入input
+        input.focus()   //自动获取焦点，不然需点两下
+        input.onblur=function(){    //失去焦点时：
+          var inputValue=input.value  //将input的内容存入一个变量
+          _this.removeChild(input)   //删除input
+          _this.innerHTML=inputValue    //让input里面的值变为输入的内容
+        } 
+      }
+      if(_this.className=="deleat"){
+        mask = $("<div class='mask'></div>");
+        popup = $(".popup")
+        //遮罩层
+        mask.css({
+          height:document.getElementsByTagName("body")[0].offsetHeight
+        })
+        mask.appendTo($("body"))
+        //弹出层
+        popup.fadeIn()
+        popup.css({
+          left:(document.getElementsByTagName("body")[0].offsetWidth - popup[0].offsetWidth) / 2 + "px",
+          top:(document.documentElement.clientHeight - popup[0].offsetHeight) / 2 + document.getElementsByTagName("body")[0].scrollTop + "px"
+        })
+      }
+    }
+
+
+    $("#cancel").click(function(){
+      mask.fadeOut(function(){
+       mask.remove();
+      });
+      popup.fadeOut();
+    })
+    $("#confirm").click(function(){
+      mask.fadeOut(function(){
+        mask.remove();
+      });
+      popup.fadeOut();
+      tbody.removeChild(_this.parentNode.parentNode)  
+    })
+  </script>
+</body>
+</html>

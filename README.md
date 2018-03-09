@@ -768,3 +768,26 @@
       })```
 
 #### $.post()同上，区别就是不能将请求参数写到url后面。
+
+### window对象
+
+  * 1.所有的全局方法都是绑定到window对象下的成员（方法）
+  * 2.所有window对象下的成员都可以直接调用，不用写window.；
+  * 3.所有全局变量都是绑定到window对象下的成员(属性)
+  * 4.window对象也可以有事件
+
+  * location.href     返回/设置当前浏览器的URL
+  * location.search   返回/设置GET请求参数
+  * history.back()    等价于为用户点击了后退按钮
+
+  获取body内容区的宽/高
+  1.
+  ```
+    document.getElementsByTagName("body")[0].offsetWidth
+    document.getElementsByTagName("body")[0].offsetHeight
+  ```
+  2.获取浏览器可视区域的宽/高
+    document.documentElement.clientWidth
+    document.documentElement.clientHeight
+
+  document.getElementsByTagName("body")[0].scrollTop  获取页面顶部滚动条卷去的距离
