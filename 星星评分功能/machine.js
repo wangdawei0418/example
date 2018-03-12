@@ -44,3 +44,42 @@ function insertAfter(newElement,p3){
 		parent.insertBefore(newElement,p3.nextSibling)
 	}
 }
+
+
+/*
+  cookie相关操作开始
+*/
+
+function getCookie(queryStr){
+  //1.获取到要找的属性在字符串中的起始位startIndex
+  //2.获取到要找的属性所对应的属性值在字符串中的终止位置endIndex
+  //3.从起始位startIndex，截取到终止位endIndex
+  //4.以=为切割点，将第三步截取到的字符串切割为长度2的数组，数组下标[1]就是寻找属性对应的属性值.
+  //获取设置过的cookie
+  var str = document.cookie;
+  var startIndex = str.indexOf(queryStr)
+  var endIndex = str.indexOf(";",startIndex)
+  //当前寻找的是最后一条cookie
+  if(endIndex == -1){
+    endIndex = str.length;
+  }
+  var result = str.slice(startIndex,endIndex).split("=")[1]
+  return result;
+}
+
+function setCookie(data,date){
+  var d = new Date();
+  d.setDate(date);
+  for(var i in data){
+    document.cookie = i + "=" + data[i] + ";expires=" + d;
+  }
+}
+
+function removeCookie(attrName){
+  var d = new Date();
+  d.setDate(d.getDate() - 1);
+  document.cookie = attrName + "=1;expires=" + d;
+}
+/*
+  cookie相关操作结束
+*/
