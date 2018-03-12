@@ -652,6 +652,8 @@
   - NodeObject   返回该Node或NodeList的jQuery对象形式
 
   - String html代码段  生成一个与HTML代码段相吻合的jQuery对象
+
+  - function   当页面加载完成之后触发的函数
   
 #### 链接调用    
 
@@ -780,14 +782,36 @@
   * location.search   返回/设置GET请求参数
   * history.back()    等价于为用户点击了后退按钮
 
-  获取body内容区的宽/高
-  1.
+  1.获取body内容区的宽/高
   ```
     document.getElementsByTagName("body")[0].offsetWidth
     document.getElementsByTagName("body")[0].offsetHeight
   ```
   2.获取浏览器可视区域的宽/高
+  ```
     document.documentElement.clientWidth
     document.documentElement.clientHeight
+  ```
+  3.获取页面顶部滚动条卷去的距离
+  ```
+    document.getElementsByTagName("body")[0].scrollTop
+    document.documentElement.scrollTop
+  ```
 
-  document.getElementsByTagName("body")[0].scrollTop  获取页面顶部滚动条卷去的距离
+#### window对象下的事件:
+    * onload 当页面加载完成之后执行的事件
+      - $(function(){}) 与 window.onload 的不同点
+      - 1.执行时机的不同 window.onload 偏晚
+      - 2.$(function()) 不会冲突  而 window.onload 会冲突(用addEventListener()方法代替原有绑定事件的写法)
+    
+    * onscroll 当页面滚动时触发的事件
+    * onresize 当浏览器调整可视尺寸时
+
+### cookie  在用户本机上存储数据
+  1.在整个网站共享一份cookie
+  2.存储大小有限制（一般来说不大于1M）
+  3.每条cookie都有自己独立的生命周期
+
+```
+  设置cookie方法：document.cookie = "属性名=属性值;expires=" + 日期对象
+```

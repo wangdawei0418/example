@@ -1,0 +1,16 @@
+HTML CSS JAVASCRIPT
+
+HTML 标签
+<title>
+
+<标签名>内容</标签名>  完整的HTML标签    双标签
+										 单标签
+
+
+<标签名 属性名="属性值"></标签名>
+
+
+body  主体
+title 标题
+a     超链接
+	href 链接地址
