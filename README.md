@@ -815,3 +815,6 @@
 ```
   设置cookie方法：document.cookie = "属性名=属性值;expires=" + 日期对象
 ```
+
+  * 当多条cookie共同存在时，需要重新对document.cookie进行赋值，此次赋值并不会覆盖之前的操作.
+  * 删除某条cookie，只要将该条cookie的声明周期设置为当前时间的之前的日期就删除啦。
