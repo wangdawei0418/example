@@ -824,7 +824,7 @@
 ### 移动端布局
 
   #### 创建理想视口: `<meta name="viewport" content="width=device-width">`
-  
+
   #### 媒体查询：断点（分辨率临界点）的选择
 
   ```
@@ -863,3 +863,13 @@
   0-480 小屏幕
   480+  PC端
   ```
+
+
+HTML新标签：
+  * `<header></header>`
+  * `<footer></footer>`
+  * `<article></article>`
+  * `<nav></nav>`
+  * `<section></section>`
+  * `<aside></aside>`
+  * `<details></details>`
