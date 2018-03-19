@@ -152,7 +152,7 @@ window.onload = function(){
   //     var l = parseInt(ul.style.marginLeft);
   //     var X = event.pageX;
   //     wrap.ontouchmove = function(event){
-  //       event.preventDefault()
+        // event.preventDefault()
   //       var x = event.pageX;
   //       ul.style.marginLeft =  l - (X - x) + "px"
   //     }
