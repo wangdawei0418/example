@@ -864,6 +864,11 @@
   480+  PC端
   ```
 
+@media screen max-width(480px){
+  
+} 
+
+
 
 #### 常用的HTML新标签：
 
@@ -898,7 +903,12 @@
 
  ```
 
+  * `::selection` 选中时的样式
 
 
-#### 移动端事件
-  
+
+## Canvas
+
+  * strokeStyle 定义绘制样式
+  * lineWidth 定义绘制粗细
+  * beginPath()  绘制新的图形
