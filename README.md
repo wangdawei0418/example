@@ -912,3 +912,6 @@
   * strokeStyle 定义绘制样式
   * lineWidth 定义绘制粗细
   * beginPath()  绘制新的图形
+  * closePath()  结束一次图形绘制 并且将终点和起点相连
+  * fillStyle  定义填充样式
+  * fill()     进行填充行为
