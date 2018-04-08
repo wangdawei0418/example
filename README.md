@@ -920,5 +920,6 @@
   * createLinearGradient(x1,y1,x2,y2) 创建线性渐变对象
   * Gradient.addColorStop(位置,颜色)  创建色标
   * arc(圆心x,圆心y,半径,起始角,终止角,绘制方向(默认顺时针))
-
+  * shadowColor 定义阴影颜色
+  * shadowBlur  定义阴影模糊半径
   * moveTo(x,y)   将笔尖移至xy的位置
