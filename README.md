@@ -923,3 +923,10 @@
   * shadowColor 定义阴影颜色
   * shadowBlur  定义阴影模糊半径
   * moveTo(x,y)   将笔尖移至xy的位置
+
+  * translate()  移动画布
+  * scale()      缩放画布
+  * rotate()     旋转画布
+
+  * save()  保存当前绘制状态
+  * restore()  读取保存的上一个状态
