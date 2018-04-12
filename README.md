@@ -952,6 +952,8 @@
     ```
     
     * url模块
+        parse(url) 
 
-
+    * fs模块
+      readFile(文件名,function(error,data){})
 
