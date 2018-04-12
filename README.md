@@ -943,9 +943,9 @@
 
     * http模块
     ```
-       reateServer(fn(请求,响应){
+      createServer(fn(请求,响应){
           响应.end(向客户端返回的响应体)
-       }).listen(端口号) 创建一个HTTP服务
+      }).listen(端口号) 创建一个HTTP服务
     ```
 
 
