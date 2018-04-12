@@ -934,6 +934,7 @@
 
 
 
+### JSON反解析  `JSON.stringify(JSON对象)`
 
 ## NodeJs
 
@@ -942,11 +943,15 @@
     #### 引入模块的方式：`require(模块名)`
 
     * http模块
+
     ```
       createServer(fn(请求,响应){
           响应.end(向客户端返回的响应体)
       }).listen(端口号) 创建一个HTTP服务
+
     ```
+    
+    * url模块
 
 
 
